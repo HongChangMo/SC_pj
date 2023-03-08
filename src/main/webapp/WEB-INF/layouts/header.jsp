@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Verti by HTML5 UP</title>
+		<title>SC 프로젝트</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./resources/assets/css/main.css" />
@@ -15,8 +15,8 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.html">Verti</a></h1>
-								<span>by HTML5 UP</span>
+								<h1><a href="index.html">SC</a></h1>
+								<span>by sejong, changmo</span>
 							</div>
 
 						<!-- Nav -->
