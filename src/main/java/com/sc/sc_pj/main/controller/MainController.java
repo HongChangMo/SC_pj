@@ -1,4 +1,4 @@
-package com.hcm.hcm_pj.main.controller;
+package com.sc.sc_pj.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

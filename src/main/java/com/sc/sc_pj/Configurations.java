@@ -1,4 +1,4 @@
-package com.hcm.hcm_pj;
+package com.sc.sc_pj;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

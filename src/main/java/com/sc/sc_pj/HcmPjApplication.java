@@ -1,4 +1,4 @@
-package com.hcm.hcm_pj;
+package com.sc.sc_pj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
