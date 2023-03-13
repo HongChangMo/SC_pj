@@ -1962,11 +1962,12 @@ input, select, textarea {
 /* Nav */
 
 	#nav {
-		position: absolute;
-		right: 0;
-		top: 0;
-		font-size: 0.9em;
-	}
+    		position: absolute;
+            left: auto;
+            top: 0;
+            font-size: 0.9em;
+            padding-left: 300px;
+    	}
 
 		#nav ul {
 			list-style: none;
