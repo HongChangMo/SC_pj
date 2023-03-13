@@ -10,13 +10,9 @@
         <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
 
-    <definition name="layoutContent" template="/WEB-INF/layouts/ContsLayout.jsp">
-        <put-attribute name="content" value="" />
-    </definition>
-
     <!-- 메인 화면 -->
-    <definition name="index" extends="layoutTemplate">
-        <put-attribute name="content" value="/WEB-INF/views/index.jsp" />
+    <definition name="main" extends="layoutTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/service/main/main.jsp" />
     </definition>
 
 </tiles-definitions>

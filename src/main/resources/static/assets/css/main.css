@@ -1963,9 +1963,10 @@ input, select, textarea {
 
 	#nav {
 		position: absolute;
-		right: 0;
-		top: 0;
-		font-size: 0.9em;
+        left: auto;
+        top: 0;
+        font-size: 0.9em;
+        padding-left: 300px;
 	}
 
 		#nav ul {
