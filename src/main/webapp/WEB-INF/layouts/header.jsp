@@ -16,7 +16,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<h1><a href="index.html">SC</a></h1>
-								<span>by sejong, changmo</span>
+								<span></span>
 							</div>
 
 						<!-- Nav -->
@@ -28,9 +28,17 @@
 									<li><a href="">공지사항</a></li>
 								</ul>
 							</nav>
-							<div class="">
-							    <input type="text" name="" />
+							<div class="search-area">
+							    <input type="text" class="search-top" name="" placeholder="검색" />
+							    <button type="button">
+							        <img src="/resources/images/ico-24-search.svg" alt="검색" />
+							    </button>
 							</div>
-
+							<!--
+                            <div class="login-area">
+                                <a href="#">로그인</a>
+                                <button type="button">회원가입</button>
+                            </div>
+                            -->
 					</header>
 				</div>

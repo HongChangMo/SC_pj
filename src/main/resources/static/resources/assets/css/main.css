@@ -2010,66 +2010,43 @@ input, select, textarea {
 					color: #fff;
 				}
 
-	.dropotron {
-		background: #fff;
-		letter-spacing: 0.025em;
-		color: #696969;
-		text-decoration: none;
-		border-radius: 6px;
-		padding: 0.75em 0;
-		min-width: 15em;
-		box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0.25em 0.25em 0.1em rgba(0, 0, 0, 0.025);
-		margin-top: calc(-0.75em + 1px);
-		margin-left: -1px;
-		list-style: none;
-		padding-left: 0;
-	}
+/* search 추가 - hcm */
+    .search-area {
+        position: relative;
+        float: right;
+        top: 10px;
+        width: 234px;
+        border-radius: 26px;
+        background: #fff;
+        overflow: hidden;
+    }
 
-		.dropotron li {
-			border-top: solid 1px #eee;
-			line-height: 3em;
-			padding-left: 0;
-		}
+    .search-area > button {
+        background: #fff;
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        font-size: 0;
+    }
 
-			.dropotron li:first-child {
-				border-top: 0;
-			}
+    .search-area > img {
+        max-width: 100%;
+        vertical-align: middle;
+        height: auto;
+    }
 
-			.dropotron li > a, .dropotron li > span {
-				-moz-transition: color .25s ease-in-out, background-color .25s ease-in-out;
-				-webkit-transition: color .25s ease-in-out, background-color .25s ease-in-out;
-				-ms-transition: color .25s ease-in-out, background-color .25s ease-in-out;
-				transition: color .25s ease-in-out, background-color .25s ease-in-out;
-				text-decoration: none;
-				color: inherit;
-				display: block;
-				padding: 0 1.5em;
-			}
+    .search-top {
+        width: 100%;
+        height: 52px;
+        padding-left: 20px;
+        padding-right: 55px;
+        outline: 0;
+        border: 0;
+    }
 
-				.dropotron li > a:hover, .dropotron li > span:hover {
-					background: #eee;
-				}
 
-			.dropotron li.active > a, .dropotron li.active > span {
-				background: #eee;
-			}
 
-		.dropotron.level-0 {
-			font-size: 0.8em;
-			margin-left: 1.5em;
-			margin-top: 0;
-		}
 
-			.dropotron.level-0:before {
-				content: '';
-				position: absolute;
-				top: -0.5em;
-				left: 1em;
-				border-bottom: solid 0.75em #ffffff;
-				border-left: solid 0.75em transparent;
-				border-right: solid 0.75em transparent;
-				z-index: 1;
-			}
 
 /* Banner */
 
