@@ -11,14 +11,19 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="/resources/images/pic01.jpg" alt="" /></a>
 										<div class="inner">
-											<header>
-												<h2>Put something here</h2>
-												<p>Maybe here as well I think</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                                            <header>
+                                                <h2>Q&A</h2>
+                                            </header>
 										</div>
+										<ul>
+                                            <li>리스트1</li>
+                                            <li>리스트2</li>
+                                            <li>리스트3</li>
+                                            <li>리스트4</li>
+                                            <li>리스트5</li>
+                                            <li>리스트6</li>
+                                        </ul>
 									</section>
 
 							</div>
@@ -26,14 +31,14 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="/resources/images/pic02.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>An interesting title</h2>
-												<p>This is also an interesting subtitle</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
+										<ul>
+										    <li>리스트1</li>
+										    <li>리스트2</li>
+										    <li>리스트3</li>
+										    <li>리스트4</li>
+										    <li>리스트5</li>
+										    <li>리스트6</li>
+										</ul>
 									</section>
 
 							</div>
@@ -53,6 +58,16 @@
                                         </div>
                                     </section>
                             </div>
+                            <div class="card">
+                                <div class="card-header">
+                                  My Card
+                                </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">Lorem</h5>
+                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
+                                  <a href="#" class="btn btn-primary">More</a>
+                                </div>
+                             </div>
 						</div>
 					</div>
 				</div>
