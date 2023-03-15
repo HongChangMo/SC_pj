@@ -16,7 +16,7 @@
                                                 <h2>Q&A</h2>
                                             </header>
 										</div>
-										<ul>
+										<ul class="list-cont">
                                             <li>리스트1</li>
                                             <li>리스트2</li>
                                             <li>리스트3</li>
@@ -31,7 +31,12 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<ul>
+									    <div class="inner">
+                                            <header>
+                                                <h2>지식</h2>
+                                            </header>
+                                        </div>
+										<ul class="list-cont">
 										    <li>리스트1</li>
 										    <li>리스트2</li>
 										    <li>리스트3</li>
@@ -47,27 +52,40 @@
 						<div class="row">
 						    <div class="col-6 col-12-medium">
                                 <!-- Box -->
-                                    <section class="box feature">
-                                        <a href="#" class="image featured"><img src="/resources/images/pic03.jpg" alt="" /></a>
+                                   <section class="box feature">
                                         <div class="inner">
-                                            <header>
-                                                <h2>Oh, and finally ...</h2>
-                                                <p>Here's another intriguing subtitle</p>
-                                            </header>
-                                            <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                                        </div>
+                                               <header>
+                                                   <h2>커뮤니티</h2>
+                                               </header>
+                                           </div>
+                                        <ul class="list-cont">
+                                            <li>리스트1</li>
+                                            <li>리스트2</li>
+                                            <li>리스트3</li>
+                                            <li>리스트4</li>
+                                            <li>리스트5</li>
+                                            <li>리스트6</li>
+                                        </ul>
                                     </section>
                             </div>
-                            <div class="card">
-                                <div class="card-header">
-                                  My Card
-                                </div>
-                                <div class="card-body">
-                                  <h5 class="card-title">Lorem</h5>
-                                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-                                  <a href="#" class="btn btn-primary">More</a>
-                                </div>
-                             </div>
+                            <div class="col-6 col-12-medium">
+                                <!-- Box -->
+                                   <section class="box feature">
+                                        <div class="inner">
+                                               <header>
+                                                   <h2>공지사항</h2>
+                                               </header>
+                                           </div>
+                                        <ul class="list-cont">
+                                            <li>리스트1</li>
+                                            <li>리스트2</li>
+                                            <li>리스트3</li>
+                                            <li>리스트4</li>
+                                            <li>리스트5</li>
+                                            <li>리스트6</li>
+                                        </ul>
+                                    </section>
+                            </div>
 						</div>
 					</div>
 				</div>
