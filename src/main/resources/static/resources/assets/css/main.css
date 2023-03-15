@@ -963,6 +963,31 @@ input, select, textarea {
 
 		@media screen and (max-width: 980px) {
 
+            .search-area {
+                display: none;
+            }
+
+            .search-area-mobile {
+                width: 235px;
+                margin: 1em 0em 1em 0em;
+                border-radius: 26px;
+                background: #fff;
+                overflow: hidden;
+                border: solid;
+                border-color: black;
+            }
+
+            .search-area-mobile >button {
+                background: #fff;
+                position: absolute;
+                right: 38px;
+                width: 30px;
+            }
+
+            .search-area-mobile > input {
+
+            }
+
 			.row {
 				display: flex;
 				flex-wrap: wrap;
@@ -1465,7 +1490,7 @@ input, select, textarea {
 	}
 
 	header {
-		margin: 0 0 2em 0;
+
 	}
 
 		header h2, header h3 {
@@ -1630,7 +1655,6 @@ input, select, textarea {
 		-webkit-appearance: none;
 		position: relative;
 		display: inline-block;
-		background: #0090c5;
 		color: #fff;
 		text-decoration: none;
 		border-radius: 6px;
@@ -1651,15 +1675,6 @@ input, select, textarea {
 			margin-right: 0.5em;
 			top: 0.05em;
 		}
-
-		input[type="button"]:hover,
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		button:hover,
-		.button:hover {
-			background: #10a0d5;
-		}
-
 		input[type="button"]:active,
 		input[type="submit"]:active,
 		input[type="reset"]:active,
@@ -1785,27 +1800,43 @@ input, select, textarea {
 			padding: 0;
 		}
 
-			.box.feature .inner {
-				padding: 4em 2em 3em 2em;
-			}
+        .box.feature .inner {
+            padding: 1em 2em 1em 2em;
+            border-radius: 10px;
+            background-color: #D9E5FF;
+        }
 
-			.box.feature h2 {
-				font-size: 1.35em;
-			}
+        .box.feature h2 {
+            font-size: 1.35em;
+        }
 
-			.box.feature p {
-				margin: 0;
-			}
+        .box.feature p {
+            margin: 0;
+        }
 
-			.box.feature .image {
-				position: relative;
-				margin: 0;
-			}
+        .box.feature .image {
+            position: relative;
+            margin: 0;
+        }
 
-				.box.feature .image img {
-					border-bottom-left-radius: 0;
-					border-bottom-right-radius: 0;
-				}
+        .box.feature .image img {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        ul.list-cont {
+            margin: 2em 0em 2em 0em;
+            list-style: none;
+            padding: 0px;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        ul.list-cont li {
+            padding: 5px 0px 5px 5px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #efefef;
+        }
 
 /* Icons */
 
