@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainController {
+public class AdminMainController {
 
-    @RequestMapping("/")
-    public ModelAndView main() {
+    @RequestMapping("/admin")
+    public ModelAndView adminMain() {
         ModelAndView mv = new ModelAndView();
 
-        mv.setViewName("main");
+        mv.setViewName("admin/main/main");
         return mv;
     }
 }

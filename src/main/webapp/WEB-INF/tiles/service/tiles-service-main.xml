@@ -11,7 +11,7 @@
     </definition>
 
     <!-- 메인 화면 -->
-    <definition name="main" extends="layoutTemplate">
+    <definition name="service/main/main" extends="layoutTemplate">
         <put-attribute name="content" value="/WEB-INF/views/service/main/main.jsp" />
     </definition>
 
