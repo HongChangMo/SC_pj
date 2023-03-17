@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="adminLayoutTemplate" template="/WEB-INF/layouts/AdminMainLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/layouts/adminHeader.jsp" />
+        <put-attribute name="aside" value="/WEB-INF/layouts/adminAside.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/adminFooter.jsp" />
+    </definition>
+
+    <!-- 메인 화면 -->
+    <definition name="admin/notice/*" extends="adminLayoutTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/admin/notice/{1}.jsp" />
+    </definition>
+
+</tiles-definitions>
