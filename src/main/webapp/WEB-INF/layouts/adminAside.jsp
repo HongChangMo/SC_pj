@@ -8,7 +8,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/admin">
           <i class="bi bi-house"></i>
           <span>홈</span>
         </a>

@@ -74,6 +74,7 @@
                                                <header>
                                                    <h2>공지사항</h2>
                                                </header>
+                                               <img src="/resources/images/megaphone.png" />
                                            </div>
                                         <ul class="list-cont">
                                             <li>리스트1</li>

@@ -19,8 +19,8 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.html">SC</a></h1>
-								<span></span>
+								<h1><a href="index.html">DS</a></h1>
+								<span>Developer Space</span>
 							</div>
 
 						<!-- Nav -->
