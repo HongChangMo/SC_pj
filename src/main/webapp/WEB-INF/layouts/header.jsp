@@ -27,9 +27,9 @@
 							<nav id="nav">
 								<ul>
 									<li><a href="#">Q&A</a></li>
-									<li><a href="">지식</a></li>
-									<li><a href="">커뮤니티</a></li>
-									<li><a href="">공지사항</a></li>
+									<li><a href="#">지식</a></li>
+									<li><a href="#">커뮤니티</a></li>
+									<li><a href="#">공지사항</a></li>
 								</ul>
 							</nav>
 							<div class="search-area">
