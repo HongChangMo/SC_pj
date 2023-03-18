@@ -663,7 +663,7 @@ input, select, textarea {
 						}
 
 				.row {
-					margin-top: -40px;
+					margin-top: -30px;
 					margin-left: -40px;
 				}
 
@@ -908,7 +908,7 @@ input, select, textarea {
 						}
 
 				.row {
-					margin-top: -25px;
+					margin-top: -20px;
 					margin-left: -25px;
 				}
 
@@ -2530,7 +2530,7 @@ input, select, textarea {
     }
 
     .list-wrap > section {
-        margin: 3em 0em 3em 0em;
+        margin: 3em 1em 3em 1em;
     }
 
     .list-info {
@@ -2580,7 +2580,7 @@ input, select, textarea {
 			}
 
 			h2, h3, h4, h5, h6 {
-				font-size: 13pt;
+				font-size: 25pt;
 				margin: 0 0 1em 0;
 			}
 
