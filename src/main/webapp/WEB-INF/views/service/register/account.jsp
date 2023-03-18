@@ -47,8 +47,8 @@
     						  		<label for="user_id" class="form-label">이메일 주소</label>
     							    <input id="user_id" name="user_id" class="form-control mr-sm-2" placeholder="이메일을 입력해주세요." />
     							    <br/>
-                                    <button class="btn" style="width:150px;" id="join_btn" type="button" onclick="location.href='/login'">취소</button>
-                                    <button class="btn btn-primary" style="width:160px;" id="join_btn" type="button">계정찾기</button><br><br>
+                                    <button class="btn" style="width:180px;" id="join_btn" type="button" onclick="location.href='/login'">취소</button>
+                                    <button class="btn btn-primary" style="width:190px;" id="join_btn" type="button">계정찾기</button><br><br>
     						    </div>
     						</form>
     					</div>
