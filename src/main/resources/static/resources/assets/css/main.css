@@ -117,14 +117,13 @@ input, select, textarea {
 		line-height: 2.25em;
 	}
 
-	a {
-		color: #0090c5;
-		text-decoration: underline;
+	.box >a {
+		text-decoration: none;
 	}
 
-		a:hover {
-			text-decoration: none;
-		}
+    .box >a:hover > .inner > header > h2 {
+        color:#fff;
+    }
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #444;
@@ -421,7 +420,7 @@ input, select, textarea {
 				}
 
 		.row {
-			margin-top: -40px;
+			margin-top: -30px;
 			margin-left: -40px;
 		}
 
@@ -982,6 +981,7 @@ input, select, textarea {
                 position: absolute;
                 right: 38px;
                 width: 30px;
+                height: 50px;
             }
 
             .search-area-mobile > input {
@@ -1789,6 +1789,16 @@ input, select, textarea {
 
 /* Box */
 
+    .main-img {
+            position: relative;
+            float: right;
+            top: -50px;
+    }
+
+    .main-img > img {
+        width: 65px;
+    }
+
 	.box {
 		background: #fff;
 		border-radius: 6px;
@@ -1804,6 +1814,8 @@ input, select, textarea {
             padding: 1em 2em 1em 2em;
             border-radius: 10px;
             background-color: #EAEAEA;
+            height: 80px;
+            padding-top: 29px;
         }
 
         .box.feature h2 {
@@ -2487,6 +2499,75 @@ input, select, textarea {
 			}
 
 	}
+
+	/* Q&A */
+
+    ul, ol, ul, dl {
+        list-style: none;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .hash-tag > a {
+        text-decoration: none;
+        color: #444;
+    }
+
+    .hash-tag > a:hover {
+        font-weight: 600;
+    }
+
+
+    .txt-wrap > h3 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    .txt-wrap > p {
+        margin-bottom: 0;
+    }
+
+    .list-wrap > section {
+        margin: 3em 0em 3em 0em;
+    }
+
+    .list-info {
+        padding: 1em 2em 1em 2em;
+        border-radius: 10px;
+        background-color: #EAEAEA;
+        height: 100px;
+        padding-top: 29px;
+    }
+
+    .list-search-wrap {
+        margin: 2em 0em 2em 0em;
+    }
+
+    .list-wrap > section > ul {
+        margin-top: 2em;
+        padding: 0;
+    }
+
+    .list-wrap > section > ul > li {
+        border-bottom: 1px dotted;
+    }
+
+    .list-wrap > section > ul > li:first-child {
+            border-top: 1px dotted;
+        }
+
+    .qa-img {
+        position: relative;
+        float: right;
+        top: -65px;
+    }
+
+    .qa-img > img {
+        width: 65px;
+    }
+
 
 /* Small */
 
