@@ -1803,7 +1803,7 @@ input, select, textarea {
         .box.feature .inner {
             padding: 1em 2em 1em 2em;
             border-radius: 10px;
-            background-color: #D9E5FF;
+            background-color: #EAEAEA;
         }
 
         .box.feature h2 {
@@ -1967,7 +1967,7 @@ input, select, textarea {
 	}
 
 		#logo h1 {
-			background: #ff4486;
+			background: #444;
 			color: #fff;
 			border-radius: 6px;
 			font-family: 'Oleo Script', serif;
