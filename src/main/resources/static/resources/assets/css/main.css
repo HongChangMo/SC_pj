@@ -962,6 +962,14 @@ input, select, textarea {
 
 		@media screen and (max-width: 980px) {
 
+            .search-btn {
+                display: none;
+            }
+
+            .sel-div {
+                display: none;
+            }
+
             .search-area {
                 display: none;
             }
@@ -1680,7 +1688,8 @@ input, select, textarea {
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background: #20b0e5;
+			background: #444;
+			color: #fff;
 		}
 
 		input[type="button"].alt,
@@ -2501,6 +2510,93 @@ input, select, textarea {
 	}
 
 	/* Q&A */
+    .search-btn {
+        margin-left: 1em;
+    }
+
+    .div-left {
+        float: left;
+    }
+
+    .div-right {
+        float: right;
+    }
+
+    .sel-div {
+        position: relative;
+        top: -8px;
+    }
+
+    .page-wrap {
+        clear: both;
+        margin-top: 50px;
+    }
+
+    .page-wrap > ul {
+        text-align: center;
+    }
+
+    .page-wrap > ul > li {
+        display: inline-block;
+        margin: 0 4px;
+    }
+
+    .page-wrap > ul > li > a {
+        display: block;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #353331;
+        text-align: center;
+        background-color: #EAEAEA;
+    }
+
+    .page-wrap > ul > li.active > a {
+        background-color: #444;
+        color: #fff;
+        font-family: 'notokr-bold', sans-serif;
+        text-decoration: underline;
+    }
+
+    .sel-default {
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        padding: 0 16px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-family: 'notokr-medium', sans-serif;
+        font-size: 16px;
+        line-height: 42px;
+        color: inherit;
+        text-align: left;
+        background-color: #f7f7f7;
+        background-image: url(/resources/images/ico-12-sel-arrow-down.svg);
+        background-size: 12px;
+        background-position: right 16px center;
+        background-repeat: no-repeat;
+        outline: none;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.375rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
 
     ul, ol, ul, dl {
         list-style: none;
@@ -2545,18 +2641,18 @@ input, select, textarea {
         margin: 2em 0em 2em 0em;
     }
 
-    .list-wrap > section > ul {
-        margin-top: 2em;
+    .list-wrap > section > .list-item-wrap > ul {
+        margin-top: 7em;
         padding: 0;
     }
 
-    .list-wrap > section > ul > li {
+    .list-wrap > section > .list-item-wrap > ul > li {
         border-bottom: 1px dotted;
     }
 
-    .list-wrap > section > ul > li:first-child {
+    .list-wrap > section > .list-item-wrap > ul > li:first-child {
             border-top: 1px dotted;
-        }
+       }
 
     .qa-img {
         position: relative;
@@ -2776,3 +2872,101 @@ input, select, textarea {
 			}
 
 	}
+
+.col-1 {
+    width: 8.33333%;
+}
+
+.col-2 {
+    width: 16.66667%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33333%;
+}
+
+.col-5 {
+    width: 41.66667%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33333%;
+}
+
+.col-8 {
+    width: 66.66667%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33333%;
+}
+
+.col-11 {
+    width: 91.66667%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+@media screen and (max-width: 980px) {
+    .col-1-small {
+    	width: 8.33333%;
+    }
+
+    .col-2-small {
+    	width: 16.66667%;
+    }
+
+    .col-3-small {
+    	width: 25%;
+    }
+
+    .col-4-small {
+    	width: 33.33333%;
+    }
+
+    .col-5-small {
+    	width: 41.66667%;
+    }
+
+    .col-6-small {
+    	width: 50%;
+    }
+
+    .col-7-small {
+    	width: 58.33333%;
+    }
+
+    .col-8-small {
+    	width: 66.66667%;
+    }
+
+    .col-9-small {
+    	width: 75%;
+    }
+
+    .col-10-small {
+    	width: 83.33333%;
+    }
+
+    .col-11-small {
+    	width: 91.66667%;
+    }
+
+    .col-12-small {
+    	width: 100%;
+    }
+}
