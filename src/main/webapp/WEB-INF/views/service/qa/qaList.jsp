@@ -15,60 +15,78 @@
                         <img src="/resources/images/conversation.png" />
                     </div>
                 </div>
-                <div class="list-search-wrap">
-                    <input type="text" name="" placeholder="검색어를 입력하세요." />
-                    <button type="button">
-                        검색
-                    </button>
-                    <select>
-                        <option>10</option>
-                        <option>20</option>
-                        <option>30</option>
-                    <select>
+                <div class="list-search-wrap col-12 ">
+                    <div class="col-9 col-12-small div-left">
+                        <input type="text" class="form-control" name="" placeholder="검색어를 입력하세요." />
+                    </div>
+                    <div class="search-btn col-1 div-left">
+                        <button type="button" class="form-control">
+                            검색
+                        </button>
+                    </div>
+                    <div class="sel-div col-1 div-right">
+                        <select class="sel-default">
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                        <select>
+                    </div>
                 </div>
-                <ul>
-                    <li>
-                        <div class="txt-wrap">
-                            <p class="txt-info">
-                                <span>작성자</span>
-                            </p>
-                            <h3>제목</h3>
-                            <p class="hash-tag">
-                                <a href="#"><span>#hash-tag1</span></a>
-                                <a href="#"><span>#hash-tag2</span></a>
-                                <a href="#"><span>#hash-tag3</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="txt-wrap">
-                            <p class="txt-info">
-                                <span>작성자</span>
-                            </p>
-                            <h3>제목</h3>
-                            <p class="hash-tag">
-                                <a href="#"><span>#hash-tag1</span></a>
-                                <a href="#"><span>#hash-tag2</span></a>
-                                <a href="#"><span>#hash-tag3</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="txt-wrap">
-                            <p class="txt-info">
-                                <span>작성자</span>
-                            </p>
-                            <h3>제목</h3>
-                            <p class="hash-tag">
-                                <a href="#"><span>#hash-tag1</span></a>
-                                <a href="#"><span>#hash-tag2</span></a>
-                                <a href="#"><span>#hash-tag3</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="paging-wrap">
-
+                <div class="list-item-wrap">
+                    <ul>
+                        <li>
+                            <div class="txt-wrap">
+                                <p class="txt-info">
+                                    <span>작성자</span>
+                                </p>
+                                <h3>제목</h3>
+                                <p class="hash-tag">
+                                    <a href="#"><span>#hash-tag1</span></a>
+                                    <a href="#"><span>#hash-tag2</span></a>
+                                    <a href="#"><span>#hash-tag3</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="txt-wrap">
+                                <p class="txt-info">
+                                    <span>작성자</span>
+                                </p>
+                                <h3>제목</h3>
+                                <p class="hash-tag">
+                                    <a href="#"><span>#hash-tag1</span></a>
+                                    <a href="#"><span>#hash-tag2</span></a>
+                                    <a href="#"><span>#hash-tag3</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="txt-wrap">
+                                <p class="txt-info">
+                                    <span>작성자</span>
+                                </p>
+                                <h3>제목</h3>
+                                <p class="hash-tag">
+                                    <a href="#"><span>#hash-tag1</span></a>
+                                    <a href="#"><span>#hash-tag2</span></a>
+                                    <a href="#"><span>#hash-tag3</span></a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-wrap">
+                    <ul>
+                        <li><a href="#">&laquo;&laquo;</a></li>
+                        <li><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#" >1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                        <li><a href="#">&raquo;&raquo;</a></li>
+                    </ul>
                 </div>
             </section>
         </div>
