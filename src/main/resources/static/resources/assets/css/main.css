@@ -2611,6 +2611,10 @@ input, select, textarea {
         color: #444;
     }
 
+    .hash-tag > a > span {
+        font-size: 15px;
+    }
+
     .hash-tag > a:hover {
         font-weight: 600;
     }
