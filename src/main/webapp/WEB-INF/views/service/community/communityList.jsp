@@ -9,10 +9,10 @@
             <section>
                 <div class="list-info">
                     <header>
-                        <h2>Q&A</h2>
+                        <h2>커뮤니티</h2>
                     </header>
                     <div class="list-img">
-                        <img src="/resources/images/conversation.png" />
+                        <img src="/resources/images/communication.png" />
                     </div>
                 </div>
                 <div class="list-search-wrap col-12 ">

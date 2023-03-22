@@ -1,4 +1,4 @@
-package com.sc.sc_pj.login.controller;
+package com.sc.sc_pj.service.login.controller;
 
 
 import org.springframework.stereotype.Controller;
