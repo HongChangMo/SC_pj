@@ -20,17 +20,16 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.html">DS</a></h1>
+								<h1><a href="/">DS</a></h1>
 								<span>Developer Space</span>
 							</div>
-
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a href="#">Q&A</a></li>
-									<li><a href="#">지식</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">공지사항</a></li>
+									<li><a href="/qa/qaList">Q&A</a></li>
+									<li><a href="/knowledge/knowledgeList">지식</a></li>
+									<li><a href="/community/communityList">커뮤니티</a></li>
+									<li><a href="/notice/noticeList">공지사항</a></li>
 								</ul>
 							</nav>
 							<div class="search-area">
