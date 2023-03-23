@@ -7,10 +7,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ServiceNoticeController {
     @RequestMapping("/notice/noticeList")
-    public ModelAndView knowledgeList() {
+    public ModelAndView noticeList() {
         ModelAndView mv = new ModelAndView();
 
         mv.setViewName("service/notice/noticeList");
+
+        return mv;
+    }
+
+    @RequestMapping("/notice/noticeWrite")
+    public ModelAndView noticeWrite() {
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("service/notice/noticeWrite");
 
         return mv;
     }
