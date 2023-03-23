@@ -14,4 +14,12 @@ public class ServiceQAController {
         mv.setViewName("service/qa/qaList");
         return mv;
     }
+
+    @RequestMapping("/qa/qaWrite")
+    public ModelAndView qaWrite() {
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("service/qa/qaWrite");
+        return mv;
+    }
 }

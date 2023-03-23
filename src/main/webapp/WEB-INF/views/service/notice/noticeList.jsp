@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!-- Q&A -->
+<link rel="stylesheet" href="/resources/assets/css/main.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<!-- notice -->
 <div class="container">
     <div class="row">
         <div class="col-12 list-wrap">
@@ -75,6 +77,8 @@
                         </li>
                     </ul>
                 </div>
+                <button type="button" class="btn btn-outline-dark" style="background-color:#444; float:right;">삭제</button>
+                <button type="button" id="notice_writeBtn" class="btn btn-outline-dark" style="background-color:#444; float:right; right:10px;">등록</button>
                 <div class="page-wrap">
                     <ul>
                         <li><a href="#">&laquo;&laquo;</a></li>
@@ -92,3 +96,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $("#notice_writeBtn").click(function() {
+        location.href= "/notice/noticeWrite";
+    })
+</script>

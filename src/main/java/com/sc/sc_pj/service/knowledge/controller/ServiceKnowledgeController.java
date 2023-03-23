@@ -14,4 +14,12 @@ public class ServiceKnowledgeController {
 
         return mv;
     }
+    @RequestMapping("/knowledge/knowledgeWrite")
+    public ModelAndView knowledgeWrite() {
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("service/knowledge/knowledgeWrite");
+
+        return mv;
+    }
 }
