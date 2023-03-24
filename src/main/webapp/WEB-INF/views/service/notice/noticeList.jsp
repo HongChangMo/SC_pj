@@ -77,8 +77,6 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-outline-dark" style="background-color:#444; float:right;">삭제</button>
-                <button type="button" id="notice_writeBtn" class="btn btn-outline-dark" style="background-color:#444; float:right; right:10px;">등록</button>
                 <div class="page-wrap">
                     <ul>
                         <li><a href="#">&laquo;&laquo;</a></li>
@@ -98,7 +96,5 @@
 </div>
 
 <script type="text/javascript">
-    $("#notice_writeBtn").click(function() {
-        location.href= "/notice/noticeWrite";
-    })
+
 </script>
