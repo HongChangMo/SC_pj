@@ -15,7 +15,7 @@ public class ServiceCommunityController {
         return mv;
     }
 
-    @RequestMapping("community/communityWrite")
+    @RequestMapping("/community/communityWrite")
     public ModelAndView communityWrite() {
         ModelAndView mv = new ModelAndView();
 

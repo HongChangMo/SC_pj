@@ -71,6 +71,19 @@
                             <a href="#"><span>#자바스크립트</span></a>
                         </div>
                     </div>
+
+                    <br/>
+                    <button type="button" id="qa_deleteBtn" class="comment-btn col-1 " style="float:right;">
+                        <img src="/resources/images/free-icon-delete-7989218.png" />
+                         삭제
+                    </button>
+                    <button type="button" id="qa_updateBtn" class="comment-btn col-1" style="float:right;">
+                        <img src="/resources/images/pencil-white.png" />
+                        수정
+                    </button>
+                    <br/>
+                    <br/>
+
                     <!-- 댓글 영역 -->
                     <div class="content-comment col-12">
                         <textarea class="form-control col-10 div-left"></textarea>

@@ -23,10 +23,10 @@
                     <img src="/resources/images/home.png" />
                     </a>
                     &gt;
-                    <a href="#">Q&A</a>
+                    <a href="/qa/qaList">Q&A</a>
                     &gt;
                     <!-- 카테고리에 맞춰 변경해줘야함 -->
-                    <a class="active" href="#">new Q&A</a>
+                    <a class="active" href="/qa/qaWrite">new Q&A</a>
                 </div>
                 <div class="content-info">
                     <div class="content-topic col-12">

@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" id="knowledge_writeBtn" class="btn btn-dark div-right" >
+                <button type="button" id="community_writeBtn" class="btn btn-dark div-right" >
                     <img src="/resources/images/pencil-white.png" />
                     작성하기
                 </button>
