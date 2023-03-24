@@ -2761,6 +2761,38 @@ input, select, textarea {
         margin-left: 4em;
     }
 
+    .btn-dark {
+        -moz-transition: background-color .25s ease-in-out;
+        -webkit-transition: background-color .25s ease-in-out;
+        -ms-transition: background-color .25s ease-in-out;
+        transition: background-color .25s ease-in-out;
+        -webkit-appearance: none;
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 400;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 0.5em 0.5em 0.5em 0.5em;
+        background-color:#747474;
+    }
+
+    .btn-dark:hover {
+            background-color: #BDBDBD;
+        }
+
+    .btn-dark:active {
+        background-color: #BDBDBD;
+    }
+
+    .content-btn {
+        margin-top: 2em;
+    }
+
 
 /* Small */
 

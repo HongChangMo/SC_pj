@@ -77,8 +77,10 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-outline-dark" style="background-color:#444; float:right;">삭제</button>
-                <button type="button" id="knowledge_writeBtn" class="btn btn-outline-dark" style="background-color:#444; float:right; right:10px;">등록</button>
+                <button type="button" id="knowledge_writeBtn" class="btn btn-dark div-right" >
+                    <img src="/resources/images/pencil-white.png" />
+                    작성하기
+                </button>
                 <div class="page-wrap">
                     <ul>
                         <li><a href="#">&laquo;&laquo;</a></li>
