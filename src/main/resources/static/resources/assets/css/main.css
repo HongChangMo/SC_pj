@@ -3050,6 +3050,10 @@ input, select, textarea {
     width: 100%;
 }
 
+.col-13 {
+    width: 130%;
+}
+
 @media screen and (max-width: 980px) {
     .col-1-small {
     	width: 8.33333%;
@@ -3097,5 +3101,9 @@ input, select, textarea {
 
     .col-12-small {
     	width: 100%;
+    }
+
+    .col-13-small {
+        width: 130%;
     }
 }
