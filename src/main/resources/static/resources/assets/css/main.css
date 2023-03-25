@@ -1651,9 +1651,34 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"],
+    .ht_no_btn {
+            -moz-transition: background-color .25s ease-in-out;
+            -webkit-transition: background-color .25s ease-in-out;
+            -ms-transition: background-color .25s ease-in-out;
+            transition: background-color .25s ease-in-out;
+            -webkit-appearance: none;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 800;
+            outline: 0;
+            border: 0;
+            color: #111;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 20px;
+            padding: 0em 1.7em 0em 0.5em;
+            margin-top: 1em;
+            background-color: #6799FF;;
+            margin-right: 0.5em;
+        }
+
+    .ht_img {
+        position: relative;
+        right: -13px;
+        width: 10px;
+    }
+
 	button,
 	.button {
 		-moz-transition: background-color .25s ease-in-out;
@@ -2260,6 +2285,7 @@ input, select, textarea {
 				text-align: center;
 				font-size: 1.35em;
 				padding: 0.85em 0 !important;
+				margin-bottom: 2em;
 			}
 
 				input[type="button"].icon,

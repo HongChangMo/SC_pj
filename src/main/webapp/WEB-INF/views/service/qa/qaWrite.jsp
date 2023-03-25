@@ -14,6 +14,7 @@
   <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
   <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+</head>
 <div class="container">
     <div class="row">
         <div class="col-12 content-wrap">
@@ -44,12 +45,11 @@
                     </div>
                     <div class="content-hashtag col-12">
                         <label for="hash-tag">태그</label>
-                        <select id="hash-tag" class="sel-default">
-                            <option>이거는 결정을 해야함 combobox API?</option>
-                            <option>기술</option>
-                            <option>커리어</option>
-                            <option>기타</option>
-                        <select>
+                        <div id="hash-tag" class="col-12">
+                        </div>
+                        <div id="select-tag" class="">
+
+                        </div>
                     </div>
                     <div class="content">
                         <div class="content-detail">
@@ -67,3 +67,34 @@
 </div>
 
 <script src="/resources/common/js/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var source = [
+            { value: 1 , label: 'asd' },
+            { value: 2 , label: 'qwe'},
+            { value: 3 , label: 'zxc' }
+        ];
+
+
+        // Create a jqxComboBox
+        $("#hash-tag").jqxComboBox({source: source, width: '100%', height: '35px'});
+
+        $("#hash-tag").on("change", function(e){
+            const item = $("#hash-tag").jqxComboBox('getSelectedItem').label;
+            const id = $("#hash-tag").jqxComboBox('getSelectedItem').value;
+
+            //const appendHtml = '<input type="button" class="ht_no_btn" id="no_'+ id +'" value="# '+ item +'"/>'
+            //+ '<img class="ht_img" src="/resources/images/close.png" />';
+
+            const appendHtml = '<a class="ht_no_btn" data-id="'+ id +'" href="javascript::;">'
+            + '<span># '+ item +'</span>'
+            + '<img class="ht_img" src="/resources/images/close.png" />'
+            + '</a>';
+
+            $("#select-tag").append(appendHtml);
+
+            $("#hash-tag").val("");
+        });
+    });
+</script>

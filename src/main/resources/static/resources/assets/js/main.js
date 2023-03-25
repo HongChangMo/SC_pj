@@ -19,11 +19,11 @@
 		});
 
 	// Dropdowns.
-		$('#nav > ul').dropotron({
+		/*$('#nav > ul').dropotron({
 			mode: 'fade',
 			noOpenerFade: true,
 			speed: 300
-		});
+		});*/
 
 	// Nav.
 
