@@ -29,14 +29,22 @@
                     <!-- 카테고리에 맞춰 변경해줘야함 -->
                     <a class="active" href="/qa/qaWrite">new Q&A</a>
                 </div>
+                <form id="sendForm" name="sendForm" method="post">
                 <div class="content-info">
                     <div class="content-topic col-12">
                         <label for="topic">토픽</label>
                         <select id="topic" class="sel-default">
                             <option>선택하시오</option>
-                            <option>기술</option>
-                            <option>커리어</option>
-                            <option>기타</option>
+                            <c:choose>
+                                <c:when test="${empty cmmCodeList} ">
+
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${cmmCodeList}" var="result">
+                                        <option value="${result.cmmCd}">${result.cmmNm}</option>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         <select>
                     </div>
                     <div class="content-title col-12">
@@ -45,7 +53,7 @@
                     </div>
                     <div class="content-hashtag col-12">
                         <label for="hash-tag">태그</label>
-                        <div id="hash-tag" class="col-12">
+                        <div id="hash-tag" onChange="javascript:jsHashTagSelect();" class="col-12">
                         </div>
                         <div id="select-tag" class="">
 
@@ -61,6 +69,7 @@
                         <button id="notice_insBtn" class="form-control content-btn" type="button">작성</button>
                     </div>
                 </div>
+                </form>
             </section>
         </div>
     </div>
@@ -68,33 +77,56 @@
 
 <script src="/resources/common/js/ckeditor.js"></script>
 <script>
+
     $(document).ready(function () {
 
+        // 엔터키 처리
+        $("form[name=sendForm]").find('select').keypress(function(e) {
+            if (e.keyCode === 13) {
+                jsHashTagSelect();
+            }
+        });
+
         var source = [
-            { value: 1 , label: 'asd' },
-            { value: 2 , label: 'qwe'},
-            { value: 3 , label: 'zxc' }
+            { value: 1 , label: '태그1' },
+            { value: 2 , label: '태그2'},
+            { value: 3 , label: '태그3' }
         ];
 
 
         // Create a jqxComboBox
         $("#hash-tag").jqxComboBox({source: source, width: '100%', height: '35px'});
 
-        $("#hash-tag").on("change", function(e){
-            const item = $("#hash-tag").jqxComboBox('getSelectedItem').label;
-            const id = $("#hash-tag").jqxComboBox('getSelectedItem').value;
-
-            //const appendHtml = '<input type="button" class="ht_no_btn" id="no_'+ id +'" value="# '+ item +'"/>'
-            //+ '<img class="ht_img" src="/resources/images/close.png" />';
-
-            const appendHtml = '<a class="ht_no_btn" data-id="'+ id +'" href="javascript::;">'
-            + '<span># '+ item +'</span>'
-            + '<img class="ht_img" src="/resources/images/close.png" />'
-            + '</a>';
-
-            $("#select-tag").append(appendHtml);
-
-            $("#hash-tag").val("");
-        });
     });
+
+    function jsHashTagSelect() {
+        const item = $("#hash-tag").jqxComboBox('getSelectedItem').label;
+        const id = $("#hash-tag").jqxComboBox('getSelectedItem').value;
+
+        // 중복체크
+        if( $("#no_"+id).length > 0 ) {
+
+            alert("이미 선택된 태그입니다.");
+
+            return false;
+        }
+
+        //const appendHtml = '<input type="button" class="ht_no_btn" id="no_'+ id +'" value="# '+ item +'"/>'
+        //+ '<img class="ht_img" src="/resources/images/close.png" />';
+
+        const appendHtml = '<a class="ht_no_btn" id="no_'+ id +'" data-id="'+ id +'" href="javascript:jsHashTagDel('+ id +');">'
+        + '<span># '+ item +'</span>'
+        + '<img class="ht_img" src="/resources/images/close.png" />'
+        + '</a>';
+
+        $("#select-tag").append(appendHtml);
+
+        $("#hash-tag").val("");
+    }
+
+    // 태그 html 삭제
+    function jsHashTagDel(target_id) {
+        $("#no_"+target_id).remove();
+    }
+
 </script>
