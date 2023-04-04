@@ -11,17 +11,9 @@
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="stylesheet" href="/resources/assets/css/loginRestBtn.css" />
         <link rel="stylesheet" href="/resources/assets/js/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/jqwidgets/styles/jqx.base.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="/resources/assets/js/jquery-3.6.0.js"></script>
         <script src="/resources/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxcore.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxbuttons.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxscrollbar.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxsplitter.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxlistbox.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxdata.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxcombobox.js"></script>
-        <script type="text/javascript" src="/resources/jqwidgets/jqxpanel.js"></script>
 
 	</head>
 	<body class="is-preload homepage">
