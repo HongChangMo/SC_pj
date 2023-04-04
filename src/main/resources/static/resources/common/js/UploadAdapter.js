@@ -13,7 +13,7 @@ export default class UploadAdapter {
 
     _initRequest() {
         const xhr = this.xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:5080/boardFileUpload.do', true);
+        xhr.open('POST', 'http://localhost/file/upload/image', true);
         xhr.responseType = 'json';
     }
 
@@ -42,28 +42,3 @@ export default class UploadAdapter {
         this.xhr.send(data)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

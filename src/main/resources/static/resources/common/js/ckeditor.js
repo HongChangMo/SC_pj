@@ -13,10 +13,24 @@ ClassicEditor
 			shouldNotGroupWhenFull:true
 			},
     	ckfinder:{
+			uploadUrl: '/file/upload/image',
 			options:{
 				resourceType:'Images'
 			}
-		}
+		},
+		htmlSupport: {
+            allow: [
+                {
+                    name: /.*/,
+                    attributes: true,
+                    classes: true,
+                    styles: true
+                }
+            ]
+        },
+        htmlEmbed: {
+            showPreviews: true
+        },
 	})
 	.then( newEditor => {
 		console.log(editor);

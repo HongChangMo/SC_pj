@@ -1546,7 +1546,6 @@ input, select, textarea {
 	form input[type="email"],
 	form input[type="password"] {
 		line-height: 3em;
-		padding: 0 1em;
 	}
 
 	form select {
@@ -1577,6 +1576,72 @@ input, select, textarea {
 	form ::-moz-focus-inner {
 		border: 0;
 	}
+
+	.tag-select, .options li{
+      display:flex;
+      cursor:pointer;
+      align-items:center;
+    }
+    .tag-select{
+      height:60px;
+      padding:0 20px;
+      background:#4285f4;
+      border-radius:10px;
+      color:#ffffff;
+      justify-content:space-between;
+    }
+    .tag-content{
+      display:none;/*원래 안보이도록 설정*/
+      background:#ffffff;
+      margin-top:5px;
+      padding:15px;
+      border-radius:10px;
+    }
+
+    .active .tag-content {/*wrapper에 active클래스가 추가되면 보이도록하기*/
+      display:block;
+    }
+
+    .tag-content .tag-search-box{
+      position: relative;
+    }
+    .tag-search-box .material-icons{
+      left:15px;
+      line-height:53px;
+      position: absolute;
+    }
+    .tag-search-box input{
+      height:53px;
+      width:100%;
+      outline:none;
+      font-size:17px;
+      padding:0 10px 0 43px;
+      border: 1px solid #aabb;
+      border-radius:10px;
+    }
+    .tag-content .options{
+      margin-top:10px;
+      max-height:250px;
+      overflow-y:auto;
+    }
+    .options::-webkit-scrollbar-track{
+      backgound:#f1f1f1;
+      border-radius:25px;
+    }
+
+    .options::-webkit-scrollbar-thumb{
+      backgound:#ccc;
+      border-radius:25px;
+    }
+
+    .options li{
+      height:50px;
+      padding:0 13px;
+      border-radius:7px;
+    }
+    .options li:hover{
+       background:#f2f2f2;
+    }
 
 /* Tables */
 
