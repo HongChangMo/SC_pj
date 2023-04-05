@@ -13,9 +13,6 @@ import java.util.List;
 @Controller
 public class ServiceQAController {
 
-    @Autowired
-    private CommonService commonService;
-
     @RequestMapping("/qa/qaList")
     public ModelAndView qaList() {
         ModelAndView mv = new ModelAndView();
@@ -23,16 +20,4 @@ public class ServiceQAController {
         mv.setViewName("service/qa/qaList");
         return mv;
     }
-
-    @RequestMapping("/qa/qaWrite")
-    public ModelAndView qaWrite() {
-        ModelAndView mv = new ModelAndView();
-
-        List<CommonDTO> cmmCodeList = commonService.getCodes("qa01");
-
-        mv.addObject("cmmCodeList", cmmCodeList);
-        mv.setViewName("service/qa/qaWrite");
-        return mv;
-    }
-
 }
