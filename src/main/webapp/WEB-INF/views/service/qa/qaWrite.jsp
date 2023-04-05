@@ -92,11 +92,12 @@
                     <a class="active" href="/qa/qaWrite">new Q&A</a>
                 </div>
                 <form id="sendForm" name="sendForm" method="post">
+                <input type="hidden" name="qaContents" />
                 <div class="content-info">
                     <div class="content-topic col-12">
                         <label for="topic">토픽</label>
                         <select id="topic" name="qaTopic" class="sel-default">
-                            <option>Topic을 선택하세요</option>
+                            <option value="">Topic을 선택하세요</option>
                             <c:choose>
                                 <c:when test="${empty cmmCodeList} ">
 
@@ -137,7 +138,7 @@
                     <div class="content">
                         <div class="content-detail">
                             <label for="editor" class="form-label">본문</label>
-                            <textarea id="editor" name="qaContents" rows="500" cols="500"></textarea>
+                            <textarea id="editor" rows="500" cols="500"></textarea>
                         </div>
                     </div>
                     <div class="submit-btn div-right col-1">
@@ -183,6 +184,29 @@
 
         const topic = $('form[name="sendForm"]').find('select[name="qaTopic"]').val();
         const title = $('form[name="sendForm"]').find('input[name="qaTitle"]').val();
+        const hashtags = $('form[name="sendForm"]').find('input[name="hashtags"]').length;
+        const contents = editor.getData();
+
+        // validation check
+        if( topic == '' || topic == null ) {
+            alert( "토픽을 선택해주세요" );
+            $('form[name="sendForm"]').find('select[name="qaTopic"]').focus();
+            return false;
+        } else if( title == '' || title == null ) {
+            alert("제목을 입력해주세요");
+            $('form[name="sendForm"]').find('input[name="qaTitle"]').focus();
+            return false;
+        } else if( hashtags < 1 ) {
+            alert("태그를 선택해주세요");
+            return false;
+        } else if( contents == '' || contents == null ) {
+            alert("본문을 입력해주세요");
+            $('form[name="sendForm"]').find('textarea[name="qaContents"]').focus();
+            return false;
+        } else {
+            // validation check 후 등록 함수 호출
+            jsQnaAdd(contents);
+        }
 
     });
 
@@ -302,6 +326,27 @@
             },
             error: function(err) {
                 alert("태그 저장 오류");
+            }
+        });
+    }
+
+    // Q&A 등록 함수
+    function jsQnaAdd(contents) {
+
+        $("#sendForm").find('input[name="qaContents"]').val(contents);
+
+        let form = $("#sendForm").serialize();
+
+        $.ajax({
+            type: 'post',
+            url: '/qa/qaAdd',
+            dataType: 'json',
+            data: form,
+            success: function(ajaxResult) {
+                alert("success");
+            },
+            error: function(err) {
+                alert("등록에 실패했습니다.");
             }
         });
     }

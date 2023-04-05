@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @ToString
@@ -25,17 +26,27 @@ public class QnaDomain {
     @Column(name="qa_writer")
     private String qaWriter;
     @Column(name="qa_write_dt")
-    private String qaWriteDt;
+    private LocalDateTime qaWriteDt;
     @Column(name="qa_update_dt")
-    private String qaUpdateDt;
+    private LocalDateTime qaUpdateDt;
 
     @Builder
-    public QnaDomain(String qaTopic, String qaTitle, String qaContents, String qaWriter, String qaWriteDt, String qaUpdateDt) {
+    public QnaDomain(String qaTopic, String qaTitle, String qaContents, String qaWriter) {
         this.qaTopic = qaTopic;
         this.qaTitle = qaTitle;
         this.qaContents = qaContents;
         this.qaWriter = qaWriter;
-        this.qaWriteDt = qaWriteDt;
-        this.qaUpdateDt = qaUpdateDt;
     }
+
+    @PrePersist
+    public void prePersist() {
+        this.qaWriteDt = LocalDateTime.now();
+        this.qaUpdateDt = qaWriteDt;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.qaUpdateDt = LocalDateTime.now();
+    }
+
 }
