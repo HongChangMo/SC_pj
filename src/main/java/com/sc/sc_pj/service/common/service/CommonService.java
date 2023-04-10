@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -30,9 +31,29 @@ public class CommonService {
     * @return
     * */
     public List<CommonDTO> getCodes(String cmmType) {
-        return commonRepository.findByCmmType(cmmType);
+
+        List<CommonDomain> cmmCodeList = commonRepository.findByCmmType(cmmType);
+        // DTO List 변환
+        List<CommonDTO> codeList = new ArrayList<CommonDTO>();
+
+        for( CommonDomain domain : cmmCodeList ) {
+            codeList.add(domain.toDTO());
+        }
+
+        return codeList;
     }
 
+    /*
+     * 단일 공통코드 조회
+     * @param CommonDTO
+     * @return
+     * */
+    public CommonDTO getCode(String cmmType, String cmmCd) {
+
+        CommonDomain result = commonRepository.findByCmmTypeAndCmmCd(cmmType, cmmCd);
+
+        return result.toDTO();
+    }
     /*
      * 해시태그 리스트 출력
      * @param com_type
@@ -57,6 +78,17 @@ public class CommonService {
     }
 
     /*
+     * 단일 해시태그 조회
+     * @param long htNo
+     * @return ComHashTagDTO
+     * */
+    public ComHashTagDTO getHashTag(long htNo) {
+        ComHashTagDomain domain = comHashTagRepository.findByHtNo(htNo);
+
+        return domain.toDTO();
+    }
+
+    /*
      * 해시태그 Map 저장
      * @param ComHashTagMapDTO
      * @return
@@ -68,5 +100,23 @@ public class CommonService {
         ComHashTagMapDomain result = comHashTagMapRepository.save(comHashTagMapDomain);
 
         return result;
+    }
+
+    /*
+     * 해시태그 Map Id 조회
+     * @param String qaNo
+     * @return
+     * */
+    public List<ComHashTagMapDTO> getTagMaps(String htmNo, int typeCd) {
+
+        List<ComHashTagMapDomain> tagList = comHashTagMapRepository.findTagMapsList(Long.parseLong(htmNo), typeCd);
+
+        List<ComHashTagMapDTO> tagsList = new ArrayList<ComHashTagMapDTO>();
+
+        for (ComHashTagMapDomain domain : tagList) {
+            tagsList.add(domain.toDTO());
+        }
+
+        return tagsList;
     }
 }

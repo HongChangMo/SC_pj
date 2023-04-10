@@ -1,5 +1,6 @@
 package com.sc.sc_pj.service.common.domain;
 
+import com.sc.sc_pj.service.common.dto.CommonDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Entity
+@Getter
 @Table(name = "tb_common")
 public class CommonDomain {
     @Id
@@ -28,5 +30,9 @@ public class CommonDomain {
         this.cmmType = cmmType;
         this.cmmCd = cmmCd;
         this.cmmNm = cmmNm;
+    }
+
+    public CommonDTO toDTO() {
+        return new CommonDTO(cmmId, cmmType, cmmCd, cmmNm);
     }
 }
