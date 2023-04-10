@@ -1,6 +1,8 @@
 package com.sc.sc_pj.service.qa.domain;
 
+import com.sc.sc_pj.service.qa.dto.QnaDTO;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Entity
+@Getter
 @Table(name="tb_qna")
 public class QnaDomain {
     @Id
@@ -30,6 +33,9 @@ public class QnaDomain {
     @Column(name="qa_update_dt")
     private LocalDateTime qaUpdateDt;
 
+    @Column(name="qa_views")
+    private Integer qaViews;
+
     @Builder
     public QnaDomain(String qaTopic, String qaTitle, String qaContents, String qaWriter) {
         this.qaTopic = qaTopic;
@@ -47,6 +53,10 @@ public class QnaDomain {
     @PreUpdate
     public void preUpdate() {
         this.qaUpdateDt = LocalDateTime.now();
+    }
+
+    public QnaDTO toDTO() {
+        return new QnaDTO(qaNo,qaTopic, qaTitle, qaContents, qaWriter, qaWriteDt.toString(), qaUpdateDt.toString(), qaViews);
     }
 
 }

@@ -343,7 +343,9 @@
             dataType: 'json',
             data: form,
             success: function(ajaxResult) {
-                alert("success");
+                alert("등록되었습니다.");
+                // view 페이지 개발 완료시 view 페이지로 이동
+                location.href='/qa/qaList';
             },
             error: function(err) {
                 alert("등록에 실패했습니다.");
