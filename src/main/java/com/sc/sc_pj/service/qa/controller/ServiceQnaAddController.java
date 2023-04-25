@@ -58,7 +58,7 @@ public class ServiceQnaAddController {
             for( String str : dto.getHashtags() ) {
                 //log.info(s);
                 // type_cd (1 : q&a, 2 : 지식, 3: 커뮤니티, 4: 공지사항)
-                ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getQaNo(), Long.parseLong(str), 1);
+                ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getQaNo(), Long.parseLong(str), 1, null);
 
                 ComHashTagMapDomain tagMap_result = commonService.addTagMap(comHashTagMapDTO);
             }

@@ -1,5 +1,7 @@
 package com.sc.sc_pj.service.qa.dto;
 
+import com.sc.sc_pj.service.login.domain.UserDomain;
+import com.sc.sc_pj.service.login.dto.UserDTO;
 import com.sc.sc_pj.service.qa.domain.QnaDomain;
 import lombok.*;
 
@@ -8,7 +10,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class QnaDTO {
+public class QnaDTO extends UserDTO {
     private Long qaNo;
     private String qaTopic;
     private String qaTitle;
@@ -20,6 +22,8 @@ public class QnaDTO {
 
     // 해시태그 배열
     private String[] hashtags;
+
+    private UserDTO userDTO;
 
     public QnaDomain toEntity() {
         return new QnaDomain(qaTopic, qaTitle, qaContents, qaWriter);
@@ -34,5 +38,17 @@ public class QnaDTO {
         this.qaWriteDt = qaWriteDt;
         this.qaUpdateDt = qaUpdateDt;
         this.qaViews = qaViews;
+    }
+
+    public QnaDTO(QnaDomain qnaDomain) {
+        this.qaNo = qnaDomain.getQaNo();
+        this.qaTopic = qnaDomain.getQaTopic();
+        this.qaTitle = qnaDomain.getQaTitle();
+        this.qaContents = qnaDomain.getQaContents();
+        this.qaWriter = qnaDomain.getQaWriter();
+        this.qaWriteDt = qnaDomain.getQaWriteDt().toString();
+        this.qaUpdateDt = qnaDomain.getQaUpdateDt().toString();
+        this.qaViews = qnaDomain.getQaViews();
+        this.userDTO = qnaDomain.getUser().toDTO();
     }
 }

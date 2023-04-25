@@ -5,8 +5,13 @@ import com.sc.sc_pj.service.qa.dto.QnaDTO;
 import com.sc.sc_pj.service.qa.repository.QnaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -14,6 +19,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class QnaService {
 
     private final QnaRepository qnaRepository;
+
+    /*
+     * q&a 리스트 검색 시
+     * @param String searchKeyWord, Pageable
+     * @return
+     * */
+    public Page<QnaDTO> getQnaSearch(String searchKeyWord, Pageable pageable) {
+        return qnaRepository.findAll(searchKeyWord, pageable).map(item -> new QnaDTO(item));
+    }
+
+    /*
+     * q&a 리스트 조회
+     * @param Pageable
+     * @return
+     * */
+    public Page<QnaDTO> getQnaList(Pageable pageable) {
+        return qnaRepository.findAll(pageable).map(item -> new QnaDTO(item));
+    }
 
     /*
      * q&a 등록

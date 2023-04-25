@@ -1,5 +1,6 @@
 package com.sc.sc_pj.service.qa.domain;
 
+import com.sc.sc_pj.service.login.domain.UserDomain;
 import com.sc.sc_pj.service.qa.dto.QnaDTO;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,6 +36,10 @@ public class QnaDomain {
 
     @Column(name="qa_views")
     private Integer qaViews;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="qa_writer",referencedColumnName = "user_id", insertable = false, updatable = false)
+    private UserDomain user;
 
     @Builder
     public QnaDomain(String qaTopic, String qaTitle, String qaContents, String qaWriter) {

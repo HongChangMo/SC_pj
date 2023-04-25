@@ -119,4 +119,16 @@ public class CommonService {
 
         return tagsList;
     }
+
+    public List<ComHashTagMapDTO> getAllTags() {
+        List<ComHashTagMapDomain> tagMaps = comHashTagMapRepository.findAll();
+
+        List<ComHashTagMapDTO> tagsList = new ArrayList<ComHashTagMapDTO>();
+
+        for (ComHashTagMapDomain domain : tagMaps) {
+            tagsList.add(domain.toDTO());
+        }
+
+        return tagsList;
+    }
 }
