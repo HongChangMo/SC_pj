@@ -20,8 +20,12 @@ public class ComHashTagMapDomain {
     @EmbeddedId
     private ComHashTagMapId comHashTagMapId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ht_no", referencedColumnName = "ht_no", insertable = false, updatable = false)
+    private ComHashTagDomain comHashTagDomain;
+
     public ComHashTagMapDTO toDTO() {
-        return new ComHashTagMapDTO(comHashTagMapId.getHtmNo(), comHashTagMapId.getHtNo(), comHashTagMapId.getTypeCd());
+        return new ComHashTagMapDTO(comHashTagMapId.getHtmNo(), comHashTagMapId.getHtNo(), comHashTagMapId.getTypeCd(), comHashTagDomain.toDTO());
     }
 
 

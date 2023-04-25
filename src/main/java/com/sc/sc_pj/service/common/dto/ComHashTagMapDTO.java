@@ -2,10 +2,7 @@ package com.sc.sc_pj.service.common.dto;
 
 import com.sc.sc_pj.service.common.domain.ComHashTagDomain;
 import com.sc.sc_pj.service.common.domain.ComHashTagMapDomain;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @ToString
@@ -15,6 +12,8 @@ public class ComHashTagMapDTO {
     private Long htmNo;
     private Long htNo;
     private int typeCd;
+
+    private ComHashTagDTO comHashTagDTO;
 
     public ComHashTagMapDomain toEntity() {
 
@@ -28,5 +27,12 @@ public class ComHashTagMapDTO {
         comHashTagMapDomain.setComHashTagMapId(comHashTagMapId);
 
         return comHashTagMapDomain;
+    }
+
+    public ComHashTagMapDTO(ComHashTagMapDomain domain) {
+        this.htmNo = domain.getComHashTagMapId().getHtmNo();
+        this.htNo = domain.getComHashTagMapId().getHtNo();
+        this.typeCd = domain.getComHashTagMapId().getTypeCd();
+        this.comHashTagDTO = domain.getComHashTagDomain().toDTO();
     }
 }

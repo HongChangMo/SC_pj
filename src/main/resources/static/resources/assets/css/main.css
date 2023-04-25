@@ -1545,7 +1545,7 @@ input, select, textarea {
 	form input[type="text"],
 	form input[type="email"],
 	form input[type="password"] {
-		line-height: 3em;
+		line-height: 1em;
 	}
 
 	form select {
@@ -2716,6 +2716,10 @@ input, select, textarea {
     .txt-wrap > h3 {
         font-size: 1em;
         margin: 0;
+    }
+
+    .txt-wrap > h3:hover {
+        color: #EAEAEA;
     }
 
     .txt-wrap > p {

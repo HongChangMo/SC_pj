@@ -49,7 +49,7 @@ class HcmPjApplicationTests {
 		if( dto.getHashtags() != null ) {
 			for( String s : dto.getHashtags() ) {
 				//log.info(s);
-				ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getQaNo(), Long.parseLong(s), 1);
+				ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getQaNo(), Long.parseLong(s), 1, null);
 
 				ComHashTagMapDomain result2 = commonService.addTagMap(comHashTagMapDTO);
 

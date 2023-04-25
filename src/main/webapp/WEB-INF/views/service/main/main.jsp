@@ -10,7 +10,7 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#">
+										<a href="/qa/qaList">
 										<div class="inner">
                                             <header>
                                                 <h2>Q&A</h2>
