@@ -1,22 +1,24 @@
-package com.sc.sc_pj.service.login.domain;
+package com.sc.sc_pj.service.register.domain;
 
 import com.sc.sc_pj.service.login.dto.UserDTO;
 import com.sc.sc_pj.service.qa.domain.QnaDomain;
-import lombok.*;
+import com.sc.sc_pj.service.register.dto.RegisterDTO;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @ToString
 @Getter
-@Setter
 @Entity
 @Table(name="tb_user")
-public class UserDomain implements Serializable {
+public class RegisterDomain implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_no")
@@ -41,12 +43,8 @@ public class UserDomain implements Serializable {
     @Column(name="user_manager")
     private int userManager; // 관리자 여부
 
-    @OneToMany(mappedBy = "user")
-    private List<QnaDomain> qnaList = new ArrayList<>();
-
-
     @Builder
-    public UserDomain(String userId, String userPwd, String userName, String userNickName, String userEmail, int userAge, String userGender, String userPhone, int userManager) {
+    public RegisterDomain(String userId, String userPwd, String userName, String userNickName, String userEmail, int userAge, String userGender, String userPhone, int userManager) {
         this.userId = userId;
         this.userPwd = userPwd;
         this.userName = userName;
@@ -58,7 +56,7 @@ public class UserDomain implements Serializable {
         this.userManager = userManager;
     }
 
-    public UserDTO toDTO() {
-        return new UserDTO(userNo, userId, userPwd, userName, userNickName, userEmail, userAge, userGender, userPhone, userManager);
+    public RegisterDTO toDTO() {
+        return new RegisterDTO(userNo, userId, userPwd, userName, userNickName, userEmail, userAge, userGender, userPhone, userManager);
     }
 }
