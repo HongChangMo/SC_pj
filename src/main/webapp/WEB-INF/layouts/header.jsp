@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>SC 프로젝트</title>
+		<title>DS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
@@ -37,10 +37,16 @@
 									<li><a href="/notice/noticeList">공지사항</a></li>
 								</ul>
 							</nav>
-                                 <button type="button" onclick="location.href='/myPage'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">마이페이지</button>
-                                 <button type="button" onclick="location.href='/register'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">회원가입</button>
-                                 <button type="button" onclick="location.href='/login'" class="loginBtn login-outline-primary" style="float:right; bottom:-20px; right:-10px;">로그인</button>
-
+							<c:choose>
+							    <c:when test="${empty UserDTO}">
+                                    <button type="button" onclick="location.href='/register'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">회원가입</button>
+                                    <button type="button" onclick="location.href='/login'" class="loginBtn login-outline-primary" style="float:right; bottom:-20px; right:-10px;">로그인</button>
+							    </c:when>
+							    <c:otherwise>
+                                    <button type="button" onclick="location.href='/myPage'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">마이페이지</button>
+                                    <button type="button" onclick="location.href='/logout'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">로그아웃</button>
+							    </c:otherwise>
+							</c:choose>
 							<div class="search-area">
 							    <input type="text" class="search-top" name="" placeholder="검색" />
 							    <button type="button">
@@ -48,13 +54,6 @@
 							    </button>
 							</div>
 
-
-							<!--
-                            <div class="login-area">
-                                <a href="#">로그인</a>
-                                <button type="button">회원가입</button>
-                            </div>
-                            -->
 					</header>
 
 				</div>
