@@ -22,6 +22,9 @@ public interface QnaRepository extends JpaRepository<QnaDomain, Long>, JpaSpecif
     @Query(value="select q from QnaDomain q join q.user where q.qaTitle like %:searchKeyWord% or q.qaContents like %:searchKeyWord% or q.user.userName like %:searchKeyWord%")
     Page<QnaDomain> findAll(@Param("searchKeyWord") String searchKeyWord, Pageable pageable);
 
+    @Query(value="select q from QnaDomain q join q.user where q.qaTopic = :searchTopic and (q.qaTitle like %:searchKeyWord% or q.qaContents like %:searchKeyWord% or q.user.userName like %:searchKeyWord%)")
+    Page<QnaDomain> findAll(@Param("searchKeyWord") String searchKeyWord, @Param("searchTopic") String searchTopic, Pageable pageable);
+
     @Query(value="select q from QnaDomain q join q.user")
     Page<QnaDomain> findAll(Pageable pageable);
 }

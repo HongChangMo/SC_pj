@@ -76,6 +76,8 @@
   <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
   <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+  <!-- Google reCAPTCHA js -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <div class="container">
     <div class="row">
@@ -141,6 +143,11 @@
                             <textarea id="editor" rows="500" cols="500"></textarea>
                         </div>
                     </div>
+                    <div id="recaptcha"
+                        class="g-recaptcha"
+                        data-sitekey="6Lc9Q9klAAAAADbRJdJQlkOa4eeiL79rWGAAwJ-v"
+                        data-callback="verifyCallback"
+                        data-expired-callback="expiredCallback"></div><br />
                     <div class="submit-btn div-right col-1">
                         <button id="submitBtn" class="form-control content-btn" type="button">작성</button>
                     </div>
@@ -175,6 +182,8 @@
     const select = document.querySelector('.tag-select');//선택영역
     const options = document.querySelector('.options');
     const input = document.querySelector('.filter');//input element
+    // 0: 성공 1: 실패
+    var recaptchaCheck;
 
     let datas = [];
 
@@ -202,6 +211,9 @@
         } else if( contents == '' || contents == null ) {
             alert("본문을 입력해주세요");
             $('form[name="sendForm"]').find('textarea[name="qaContents"]').focus();
+            return false;
+        } else if( recaptchaCheck != 0 ) {
+            alert("자동 등록 방지 봇을 확인 한뒤 진행 해 주세요.");
             return false;
         } else {
             // validation check 후 등록 함수 호출
@@ -241,7 +253,7 @@
             });
 
             arr= datas.filter(data=>{
-            return data.name.startsWith(searchWord.toUpperCase());
+            return data.name.startsWith(searchWord);
           }).map(data=>'<li class="tag-li'+data.id+'" onclick="jsHashTagSelect('+ data.id +')" data-value="'+data.name+'">'+data.name+'</li>').join("");
           //map을 사용해서 데이터를 <li>태그로 감싼 것처럼 처리함.
           //join함수를 사용해서 새배열(arr)에서 출력되는','를 없앰
@@ -352,5 +364,37 @@
             }
         });
     }
+    //	인증 성공 시
+    function verifyCallback() {
+        $.ajax({
+            url : '/qa/recaptcha',
+            type : 'post',
+            contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+            dataType : 'text',
+            data : {
+                recaptcha : $("#g-recaptcha-response").val()
+            },
+            success : function(data, status, request) {
+                if( data == 0) {
+                    // recaptchaCheck 0: 성공 1 : 실패
+                    recaptchaCheck = 0;
+                } else {
+                    // recaptchaCheck 0: 성공 1 : 실패
+                    recaptchaCheck = 1;
+                }
+            }
+        });
+    };
+
+    //	인증 만료 시
+    function expiredCallback() {
+        // recaptchaCheck 0: 성공 1 : 실패
+        recaptchaCheck = 1;
+    };
+
+    //	g-recaptcha 리셋
+    const resetCallback = function() {
+        grecaptcha.reset();
+    };
 
 </script>

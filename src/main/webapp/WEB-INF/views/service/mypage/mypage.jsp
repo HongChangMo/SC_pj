@@ -3,78 +3,221 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-			<!-- Features -->
-					<div class="container">
-						<div class="row">
-							<div class="col-6 content-wrap">
-                                <section>
-                                        <div class="col-xl-4">
-                                          <div class="">
-                                            <div class="">
-                                              <h2>회원정보</h2>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="" style="position: relative; left: 50%;">
-                                          <div class="">
-                                            <div class="">
-                                              <div class="">
-                                                <div class="" id="profile-edit">
-                                                  <!-- Profile Edit Form -->
-                                                  <form>
-                                                    <div class="profile-header" style="position: relative; left: 40%;">
-                                                      <label for="profileImage" class="" style="position: relative; left: 16px;">Profile Image</label>
-                                                      <div class="">
-                                                        <img src="/resources/NiceAdmin/assets/img/profile-img.jpg" alt="Profile" style="border-radius: 60px;">
-                                                        <div class="">
-                                                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class=""></i></a>
-                                                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class=""></i></a>
-                                                        </div>
-                                                      </div>
+<style type="text/css">
+    .mypage-sub > h2 {
+        font-size: 20px;
+    }
 
-                                                    </div>
+    .mypage-info {
+        position: relative;
+        left: 50%;
+    }
 
-                                                    <div class="content-info col-12 col-13-small">
-                                                        <div class="content-title col-12">
-                                                            <label for="input_title" class="col-sm-1 col-form-label">이름</label>
-                                                            <input id="input_title" class="form-control" name="title"/>
-                                                        </div>
-                                                        <div class="content-title col-12">
-                                                            <label for="input_title" class="col-sm-1 col-form-label">비밀번호</label>
-                                                            <input id="input_title" class="form-control" name="title"/>
-                                                        </div>
+    .profile-header {
+        position: relative;
+        left: 30%;
+        width: 250px;
+        height: 250px;
+        border-radius: 70%;
+        overflow: hidden;
+    }
 
-                                                        <div class="content-title col-12">
-                                                            <label for="input_title" class="col-sm-1 col-form-label">비밀번호 확인</label>
-                                                            <input id="input_title" class="form-control" name="title"/>
-                                                        </div>
+    .profile-header > a > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-                                                        <div class="content-title col-12">
-                                                            <label for="input_title" class="col-sm-1 col-form-label">닉네임</label>
-                                                            <input id="input_title" class="form-control" name="title"/>
-                                                        </div>
+    .profile-image {
+        display: none;
+    }
 
-                                                        <div class="content-title col-12">
-                                                            <label for="input_title" class="col-sm-1 col-form-label">핸드폰 번호</label>
-                                                            <input id="input_title" class="form-control" name="title"/>
-                                                        </div>
-                                                        <br/>
-                                                        <button type="button" id="" class="btn btn-dark div-right" style="float:right;">
-                                                            <img src="/resources/images/pencil-white.png" />
-                                                            수정
-                                                        </button>
-                                                    </div>
-                                                  </form><!-- End Profile Edit Form -->
-                                                </div>
+    .profile-txt {
+        display: none;
+        position: relative;
+        left: 42%;
+        color: #444;
+        top: -55px;
+    }
+</style>
 
-                                              </div><!-- End Bordered Tabs -->
+<script>
+    $(document).ready(function() {
 
-                                            </div>
-                                          </div>
+        // image preview
+        $("#profile-image").on('change', function(e) {
+            const file = e.target.files[0];
 
-                                        </div>
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                $("#profileImg").attr("src", event.target.result);
+            }
 
-                                    </section>
+            reader.readAsDataURL(file);
+        });
+
+        $(".profile-header").mouseover(function() {
+            $(".profile-txt").css("display", "block");
+            $(".profile-header").css("filter", "brightness(0.5)");
+        })
+        .mouseout(function() {
+            $(".profile-txt").css("display", "none");
+            $(".profile-header").css("filter", "brightness(1)");
+        });
+
+        // 비밀번호 확인
+        $("#userPwd_re").on('keyup', function() {
+            if( $("#userPwd").val() != $("#userPwd_re").val() ) {
+                $("#pw_corr_feedback").css("color", "red");
+                $("#pw_corr_feedback").html("비밀번호가 일치하지 않습니다.");
+                $("#pw_corr_result").val("fail");
+            } else if( $("#userPwd_re").val() == '' || $("#userPwd").val() == '' ) {
+                $("#pw_corr_feedback").css("color", "red");
+                $("#pw_corr_feedback").html("비밀번호가 일치하지 않습니다.");
+                $("#pw_corr_result").val("fail");
+            } else {
+                $("#pw_corr_feedback").css("color", "green");
+                $("#pw_corr_feedback").html("비밀번호가 일치합니다.");
+                $("#pw_corr_result").val("ok");
+            }
+        });
+
+        $("#userPwd").on('keyup', function() {
+            if( $("#userPwd").val() != $("#userPwd_re").val() ) {
+                $("#pw_corr_feedback").css("color", "red");
+                $("#pw_corr_feedback").html("비밀번호가 일치하지 않습니다.");
+                $("#pw_corr_result").val("fail");
+            } else if( $("#userPwd_re").val() == '' || $("#userPwd").val() == '' ) {
+                $("#pw_corr_feedback").css("color", "red");
+                $("#pw_corr_feedback").html("비밀번호가 일치하지 않습니다.");
+                $("#pw_corr_result").val("fail");
+            } else {
+                $("#pw_corr_feedback").css("color", "green");
+                $("#pw_corr_feedback").html("비밀번호가 일치합니다.");
+                $("#pw_corr_result").val("ok");
+            }
+        });
+
+        // 회원정보 수정
+        $("#profile_btn").on("click", function() {
+            const frm = $('form[name="sendForm"]');
+
+            const password = frm.find('input[name="userPwd"]').val();
+            const nickname = frm.find('input[name="userNickName"]').val();
+            const phone = frm.find('input[name="userPhone"]').val();
+            const pwd_check = $("#pw_corr_result").val();
+
+            if( password == '' ) {
+                alert("비밀번호를 입력해주세요");
+                return false;
+            } else if( nickname == '' ) {
+                alert("닉네임을 입력해주세요");
+                return false;
+            } else if( phone == '' ) {
+                alert("핸드폰번호를 입력해주세요");
+                return false;
+            } else if ( phone.length < 10 ) {
+                alert("올바른 핸드폰번호를 입력해주세요");
+                return false;
+            } else if( pwd_check == 'fail' ) {
+                alert("비밀번호를 확인해주세요");
+                return false;
+            } else {
+                jsProfileEdit();
+            }
+
+        });
+
+    });
+
+    function jsProfileEdit() {
+        const frm = $('form[name="sendForm"]')[0];
+
+        const data = new FormData(frm);
+
+        $.ajax({
+            url: '/myPage/editInfo',
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            enctype: 'multipart/form-data',
+            success: function(ajaxResult) {
+                if( ajaxResult.result > 0) {
+                    alert("회원정보가 정상적으로 수정되었습니다.");
+                    location.href = '/';
+                } else {
+                    alert("회원정보수정 오류");
+                }
+
+            },
+            error: function(data) {
+                alert(data.responseText);
+            }
+        });
+    }
+
+    function jsProfileFileUpload() {
+        $("#profile-image").click();
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 content-wrap">
+            <section>
+                <div class="mypage-sub">
+                    <h2>회원정보</h2>
+                </div>
+                <div class="mypage-info">
+                    <div class="" id="profile-edit">
+                      <!-- Profile Edit Form -->
+                      <form name="sendForm" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="userNo" value="${RegisterDTO.userNo}" />
+                        <div class="profile-header">
+                            <a href="javascript:jsProfileFileUpload();">
+                                <img src="/profile/imageview?userNo=${RegisterDTO.userNo}" alt="Profile" id="profileImg" onerror="this.src='/resources/images/noimages.png'" />
+                            </a>
+                            <input type="file" class="profile-image" id="profile-image" name="profileImage" accept="image/png, image/jpeg, image/jpg" >
+                            <span class="profile-txt">편집</span>
+                        </div>
+
+                        <div class="content-info col-12 col-13-small">
+                            <div class="content-title col-12">
+                                <label for="userName" class="col-sm-1 col-form-label">이름</label>
+                                <input id="userName" class="form-control" disabled="disabled" value="${RegisterDTO.userName}" />
                             </div>
-						</div>
-					</div>
+                            <div class="content-title col-12">
+                                <label for="userPwd" class="col-sm-1 col-form-label">비밀번호</label>
+                                <input type="password" id="userPwd" class="form-control" name="userPwd"/>
+                            </div>
+
+                            <div class="content-title col-12">
+                                <label for="userPwd_re" class="col-sm-1 col-form-label">비밀번호 확인</label>
+                                <input type="password" id="userPwd_re" class="form-control"/>
+                                <span id="pw_corr_feedback"></span><br>
+                                <input id="pw_corr_result" type="hidden" value=""/>
+                            </div>
+
+                            <div class="content-title col-12">
+                                <label for="userNickName" class="col-sm-1 col-form-label">닉네임</label>
+                                <input id="userNickName" class="form-control" name="userNickName" value="${RegisterDTO.userNickName}" />
+                            </div>
+
+                            <div class="content-title col-12">
+                                <label for="userPhone" class="col-sm-1 col-form-label">핸드폰 번호</label>
+                                <input id="userPhone" class="form-control" name="userPhone" value="${RegisterDTO.userPhone}" />
+                            </div>
+                            <br/>
+                            <button type="button" id="profile_btn" class="btn btn-dark div-right" style="float:right;">
+                                <img src="/resources/images/pencil-white.png" />
+                                수정
+                            </button>
+                        </div>
+                      </form><!-- End Profile Edit Form -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

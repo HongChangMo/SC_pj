@@ -29,6 +29,10 @@ public class QnaService {
         return qnaRepository.findAll(searchKeyWord, pageable).map(item -> new QnaDTO(item));
     }
 
+    public Page<QnaDTO> getQnaSearch(String searchKeyWord, String searchTopic, Pageable pageable) {
+        return qnaRepository.findAll(searchKeyWord, searchTopic, pageable).map(item -> new QnaDTO(item));
+    }
+
     /*
      * q&a 리스트 조회
      * @param Pageable

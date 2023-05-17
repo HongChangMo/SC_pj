@@ -60,7 +60,16 @@ public class CommonService {
      * @return
      * */
     public List<ComHashTagDTO> getTags(String htNm) {
-        return comHashTagRepository.findByHtNmLike("%" +htNm.toUpperCase() + "%");
+        List<ComHashTagDomain> tagList = comHashTagRepository.findByHtNmContainingIgnoreCase(htNm);
+
+        List<ComHashTagDTO> result = new ArrayList<ComHashTagDTO>();
+
+        for( ComHashTagDomain domain : tagList ) {
+            result.add(domain.toDTO());
+            //System.out.println(result.toString());
+        }
+
+        return result;
     }
 
     /*

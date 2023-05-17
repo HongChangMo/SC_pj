@@ -1,3 +1,7 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!-- Footer -->
 				<div id="footer-wrapper">
 					<footer id="footer" class="container">
@@ -59,9 +63,9 @@
 											<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
 											<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
 										</ul>
-										<p>1234 Fictional Road<br />
-										Nashville, TN 00000<br />
-										(800) 555-0000</p>
+										<p>서울특별시 영등포구<br />
+										영등포동<br />
+										(02) 1234-5678</p>
 									</section>
 
 							</div>
@@ -70,7 +74,7 @@
 							<div class="col-12">
 								<div id="copyright">
 									<ul class="menu">
-										<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										<li>&copy; Untitled. All rights reserved</li>
 									</ul>
 								</div>
 							</div>
