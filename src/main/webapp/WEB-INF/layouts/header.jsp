@@ -15,6 +15,15 @@
         <script src="/resources/assets/js/jquery-3.6.0.js"></script>
         <script src="/resources/assets/js/jquery-ui.js"></script>
 
+        <script>
+            function jsMypage(userNo) {
+                const frm = $('form[name="registerForm"]');
+
+                frm.find('input[name="userNo"]').val(userNo);
+                frm.attr("action", "/myPage")
+                frm.submit();
+            }
+        </script>
 	</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
@@ -43,7 +52,7 @@
                                     <button type="button" onclick="location.href='/login'" class="loginBtn login-outline-primary" style="float:right; bottom:-20px; right:-10px;">로그인</button>
 							    </c:when>
 							    <c:otherwise>
-                                    <button type="button" onclick="location.href='/myPage'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">마이페이지</button>
+                                    <button type="button" onclick="jsMypage('${UserDTO.userNo}');" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">마이페이지</button>
                                     <button type="button" onclick="location.href='/logout'" class="registerBtn registerBtn-outline-primary" style="float:right; bottom:-20px; left:20px;">로그아웃</button>
 							    </c:otherwise>
 							</c:choose>
@@ -57,3 +66,6 @@
 					</header>
 
 				</div>
+<form name="registerForm" method="post" >
+    <input type="hidden" name="userNo" value="" />
+</form>

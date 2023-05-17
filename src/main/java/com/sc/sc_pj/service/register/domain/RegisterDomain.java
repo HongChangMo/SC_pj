@@ -57,6 +57,6 @@ public class RegisterDomain implements Serializable {
     }
 
     public RegisterDTO toDTO() {
-        return new RegisterDTO(userNo, userId, userPwd, userName, userNickName, userEmail, userAge, userGender, userPhone, userManager);
+        return new RegisterDTO(userNo, userId, userPwd, userName, userNickName, userEmail, userAge, userGender, userPhone, userManager, null);
     }
 }

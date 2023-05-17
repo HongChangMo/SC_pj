@@ -1,5 +1,7 @@
 package com.sc.sc_pj;
 
+import com.sc.sc_pj.service.common.controller.ImageView;
+import com.sc.sc_pj.service.common.controller.ListImageView;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,6 +48,15 @@ public class Configurations implements WebMvcConfigurer {
         return new MappingJackson2JsonView();
     }
 
+    @Bean
+    public ListImageView listImageView() {
+        return new ListImageView();
+    }
+
+    @Bean
+    public ImageView imageView() {
+        return new ImageView();
+    }
     // 정적 자원 .js, .css, .img 등 접근 설정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

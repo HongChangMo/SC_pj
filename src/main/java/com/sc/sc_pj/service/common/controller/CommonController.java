@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,5 +46,18 @@ public class CommonController {
         log.debug(result.toString());
 
         return result;
+    }
+
+    @RequestMapping("/listImageView")
+    public ModelAndView listUserImageView( Long userId ) {
+        ModelAndView mv = new ModelAndView("listImageView");
+
+        String fileFullPath = "";
+        String fileThumbPath = "";
+
+        mv.addObject("fileFullPath", fileFullPath);
+        mv.addObject("fileThumbPath", fileThumbPath);
+
+        return mv;
     }
 }

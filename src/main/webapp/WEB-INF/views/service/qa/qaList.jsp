@@ -17,23 +17,52 @@
                     </div>
                 </div>
                 <form name="qnaForm" method="get">
-                <input type="hidden" name="page" value="${QnaList.pageable.pageNumber}">
+                <input type="hidden" name="page" value="${QnaList.pageable.pageNumber}" />
+                <input type="hidden" name="searchTopic" value="${searchTopic }" />
+                    <div class="topic-wrap col-12">
+                        <ul>
+                            <c:choose>
+                                <c:when test="${empty cmmCodeList}">
+                                    <li>조회된 목록이 없습니다.</li>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${cmmCodeList}" var="topic">
+                                        <li id="topic_${topic.cmmCd}" data-value="${topic.cmmCd}">
+                                            <a href="javascript:jsSearchTopic('${topic.cmmCd}');">
+                                                ${topic.cmmNm}
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                        <li id="topic-all" class="topic-active">
+                                            <a href="javascript:jsSearch();">
+                                                전체
+                                            </a>
+                                        </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </div>
                     <div class="list-search-wrap col-12 ">
-                        <div class="col-9 col-12-small div-left">
-                            <input type="text" class="form-control" name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }"/>
+                        <div class="col-12 col-12-small">
+                            <div class="col-10">
+                                <input type="text" class="form-control" name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }"/>
+                            </div>
+                            <div class="sel-div col-1 div-right">
+                                <select class="sel-default" name="size" onChange="jsSearch();">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                <select>
+                            </div>
                         </div>
+                        <!--
                         <div class="search-btn col-1 div-left">
                             <button type="button" class="form-control" onClick="jsSearch();">
                                 검색
                             </button>
                         </div>
-                        <div class="sel-div col-1 div-right">
-                            <select class="sel-default" name="size" onChange="jsSearch();">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                            <select>
-                        </div>
+                        -->
+
                     </div>
                 </form>
                 <div class="list-item-wrap">
@@ -70,54 +99,18 @@
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
-                        <!--
-                        <li>
-                            <div class="txt-wrap">
-                                <p class="txt-info">
-                                    <span>작성자</span>
-                                </p>
-                                <h3>제목</h3>
-                                <p class="hash-tag">
-                                    <a href="#"><span>#hash-tag1</span></a>
-                                    <a href="#"><span>#hash-tag2</span></a>
-                                    <a href="#"><span>#hash-tag3</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="txt-wrap">
-                                <p class="txt-info">
-                                    <span>작성자</span>
-                                </p>
-                                <h3>제목</h3>
-                                <p class="hash-tag">
-                                    <a href="#"><span>#hash-tag1</span></a>
-                                    <a href="#"><span>#hash-tag2</span></a>
-                                    <a href="#"><span>#hash-tag3</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="txt-wrap">
-                                <p class="txt-info">
-                                    <span>작성자</span>
-                                </p>
-                                <h3>제목</h3>
-                                <p class="hash-tag">
-                                    <a href="#"><span>#hash-tag1</span></a>
-                                    <a href="#"><span>#hash-tag2</span></a>
-                                    <a href="#"><span>#hash-tag3</span></a>
-                                </p>
-                            </div>
-                        </li> -->
                     </ul>
 
-                    <button type="button" id="qa_writeBtn" class="btn btn-dark div-right" >
-                        <img src="/resources/images/pencil-white.png" />
-                        작성하기
-                    </button>
-
-
+                    <c:choose>
+                        <c:when test="${empty UserDTO}">
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" id="qa_writeBtn" class="btn btn-dark div-right" >
+                                <img src="/resources/images/pencil-white.png" />
+                                작성하기
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
                 <div class="page-wrap">
@@ -164,6 +157,8 @@
     $(document).ready(function() {
         jsPageUnit();
 
+        jsTopicSelect()
+
         // pageUnit Value Set
         function jsPageUnit() {
             const pageUnit = '${QnaList.pageable.pageSize}';
@@ -190,7 +185,26 @@
     }
 
     function jsSearch() {
+        $('form[name="qnaForm"]').find('input[name="searchTopic"]').val("");
         $('form[name="qnaForm"]').attr("action", "/qa/qaList");
         $('form[name="qnaForm"]').submit();
+    }
+
+    // topic search
+    function jsSearchTopic(searchTopic) {
+        $('form[name="qnaForm"]').find('input[name="searchTopic"]').val(searchTopic);
+        $('form[name="qnaForm"]').attr("action", "/qa/qaList");
+        $('form[name="qnaForm"]').submit();
+    }
+
+    // topic active script
+    function jsTopicSelect() {
+        const topic = $('form[name="qnaForm"]').find('input[name="searchTopic"]').val();
+        if (topic != "" && topic != null) {
+            $("#topic-all").removeClass("topic-active");
+            $("#topic_"+topic).addClass("topic-active");
+        } else {
+            $("#topic-all").addClass("topic-active");
+        }
     }
 </script>

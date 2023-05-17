@@ -1,12 +1,10 @@
 package com.sc.sc_pj.service.common.dto;
 
 import com.sc.sc_pj.service.common.domain.ComHashTagDomain;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -17,4 +15,10 @@ public class ComHashTagDTO {
     public ComHashTagDomain toEntity() {
         return new ComHashTagDomain(htNm);
     }
+
+    public ComHashTagDTO(ComHashTagDomain domain) {
+        this.htNo = domain.getHtNo();
+        this.htNm = domain.getHtNm();
+    }
+
 }
