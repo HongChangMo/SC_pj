@@ -1,39 +1,36 @@
-package com.sc.sc_pj.service.qa.controller;
+package com.sc.sc_pj.service.knowledge.controller;
 
 import com.sc.sc_pj.service.common.domain.ComHashTagMapDomain;
-import com.sc.sc_pj.service.common.domain.CommonDomain;
 import com.sc.sc_pj.service.common.dto.ComHashTagMapDTO;
 import com.sc.sc_pj.service.common.dto.CommonDTO;
 import com.sc.sc_pj.service.common.service.CommonService;
+import com.sc.sc_pj.service.knowledge.domain.KnowledgeDomain;
+import com.sc.sc_pj.service.knowledge.dto.KnowledgeDTO;
+import com.sc.sc_pj.service.knowledge.service.KnowledgeService;
 import com.sc.sc_pj.service.login.dto.UserDTO;
-import com.sc.sc_pj.service.qa.domain.QnaDomain;
-import com.sc.sc_pj.service.qa.dto.QnaDTO;
-import com.sc.sc_pj.service.qa.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 @Slf4j
 @Controller
-@RequestMapping("/qa")
-public class ServiceQnaAddController {
+@RequestMapping("/knowledge")
+public class ServiceKnowledgeAddController {
 
     @Autowired
     private CommonService commonService;
 
     @Autowired
-    private QnaService qnaService;
+    private KnowledgeService knowledgeService;
 
-    @RequestMapping("/qaWrite")
-    public ModelAndView qaWrite(HttpServletRequest request) {
+    @RequestMapping("/knowledgeWrite")
+    public ModelAndView knowledgeWrite(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
 
         HttpSession session = request.getSession(false);
@@ -46,32 +43,25 @@ public class ServiceQnaAddController {
             mv.addObject("UserDTO", userDTO);
         }
 
-        List<CommonDTO> cmmCodeList = commonService.getCodes("qa01");
+        List<CommonDTO> cmmCodeList = commonService.getCodes("kn01");
 
         mv.addObject("cmmCodeList", cmmCodeList);
-        mv.setViewName("service/qa/qaWrite");
+        mv.setViewName("service/knowledge/knowledgeWrite");
+
         return mv;
     }
 
-    @RequestMapping("/qaAdd")
-    public ModelAndView qaAdd(@ModelAttribute("QnaDTO") QnaDTO dto) {
+    @RequestMapping("/knowledgeAdd")
+    public ModelAndView knowledgeAdd( @ModelAttribute( "KnowledgeDTO" ) KnowledgeDTO dto ) {
         ModelAndView mv = new ModelAndView("jsonView");
 
-        //log.info("dto.getQaTopic() : " + dto.getQaTopic());
-        //log.info("dto.getQaContents() : " + dto.getQaContents());
-        //log.info("dto.getQaTitle() : " + dto.getQaTitle());
-
-        // 230405 로그인 기능 미개발로 임시 writer id 하드코딩
-        //dto.setQaWriter("111");
-
-        // qna 정보 저장
-        QnaDomain result = qnaService.addQna(dto);
+        KnowledgeDomain result = knowledgeService.addKnowledge(dto);
 
         if( dto.getHashtags() != null ) {
             for( String str : dto.getHashtags() ) {
                 //log.info(s);
                 // type_cd (1 : q&a, 2 : 지식, 3: 커뮤니티, 4: 공지사항)
-                ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getQaNo(), Long.parseLong(str), 1, null);
+                ComHashTagMapDTO comHashTagMapDTO = new ComHashTagMapDTO(result.getKnNo(), Long.parseLong(str), 2, null);
 
                 ComHashTagMapDomain tagMap_result = commonService.addTagMap(comHashTagMapDTO);
             }

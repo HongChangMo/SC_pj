@@ -11,7 +11,7 @@
                     <img src="/resources/images/home.png" />
                     </a>
                     &gt;
-                    <a href="/qa/qaList">Q&A</a>
+                    <a href="/kn/knList">지식</a>
                     &gt;
                     <!-- 카테고리에 맞춰 변경해줘야함 -->
                     <a class="active" href="#">${CommonDTO.cmmNm}</a>
@@ -19,20 +19,20 @@
                 <div class="content-info">
                     <div class="content-sub col-12">
                         <div class="content-title col-9 div-left">
-                            <h2>${QnaDTO.qaTitle}</h2>
+                            <h2>${KnowledgeDTO.knTitle}</h2>
                         </div>
                         <div class="content-view">
-                            <h4>${QnaDTO.qaWriter}</h4>
+                            <h4>${KnowledgeDTO.knWriter}</h4>
                             <p>
                                 <img src="/resources/images/eye.png" />
-                                &nbsp;${QnaDTO.qaViews} <!-- 게시물 조회수 -->
+                                &nbsp;${KnowledgeDTO.knViews} <!-- 게시물 조회수 -->
                             </p>
                         </div>
                     </div>
                     <div class="content">
                         <div class="content-detail">
                             <p class="cont">
-                                ${QnaDTO.qaContents}
+                                ${KnowledgeDTO.knContents}
                             </p>
                         </div>
                         <!-- 해시태그 영역 -->
@@ -48,21 +48,22 @@
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose>
+                            <!--
+                            <a href="#"><span>#자바</span></a>
+                            <a href="#"><span>#자바스크립트</span></a>
+                            -->
                         </div>
                     </div>
 
                     <br/>
-                    <c:if test="${RegisterDTO.userNo eq UserDTO.userNo}">
-                        <button type="button" id="qa_deleteBtn" class="btn btn-dark col-1 " style="float:right;">
-                            <img src="/resources/images/free-icon-delete-7989218.png" />
-                             삭제
-                        </button>
-                        <button type="button" id="qa_updateBtn" class="btn btn-dark col-1" style="float:right; margin: 0em 1em 0em 1em;">
-                            <img src="/resources/images/pencil-white.png" />
-                            수정
-                        </button>
-                    </c:if>
-
+                    <button type="button" id="kn_deleteBtn" class="btn btn-dark col-1 " style="float:right;">
+                        <img src="/resources/images/free-icon-delete-7989218.png" />
+                         삭제
+                    </button>
+                    <button type="button" id="kn_updateBtn" class="btn btn-dark col-1" style="float:right; margin: 0em 1em 0em 1em;">
+                        <img src="/resources/images/pencil-white.png" />
+                        수정
+                    </button>
                     <br/>
                     <br/>
 

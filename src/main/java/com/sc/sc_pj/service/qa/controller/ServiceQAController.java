@@ -48,13 +48,13 @@ public class ServiceQAController {
 
         // session이 존재할때만 model에 담아줌.
         mv.addObject("UserDTO", userDTO);
-    }
+        }
 
         Page<QnaDTO> qnaList = null;
 
         if( searchKeyword != null ) {
             if( searchTopic!= "" || !searchTopic.equals("") ) {
-                System.out.println("searchTopic : " + searchTopic);
+                //System.out.println("searchTopic : " + searchTopic);
                 // 토픽 검색 시
                 qnaList = qnaService.getQnaSearch(searchKeyword, searchTopic, pageable);
             } else {

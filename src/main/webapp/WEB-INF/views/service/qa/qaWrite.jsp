@@ -8,6 +8,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/resources/assets/css/sub.css" />
   <style type="text/css">
   	.ck-editor__editable { height: 700px; }
 
@@ -29,10 +30,9 @@
         border: 1px solid rgba(255, 255, 255, 0.18);
     }
     #modal .modal-window {
-        background-color: #BDBDBD;
+        background-color: #F6F6F6;
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 13.5px );
-        -webkit-backdrop-filter: blur( 13.5px );
         border-radius: 10px;
         border: 1px solid rgba( 255, 255, 255, 0.18 );
         width: 400px;
@@ -51,14 +51,14 @@
     #modal .title h2 {
         display: inline;
         font-size: 20px;
+        font-weight: 400;
     }
     #modal .close-area {
         display: inline;
         float: right;
         padding-right: 10px;
         cursor: pointer;
-        text-shadow: 1px 1px 2px gray;
-        color: white;
+        font-size: 25px;
     }
 
     #modal .modal-content {
@@ -71,6 +71,11 @@
 
     #modal .modal-btn {
         margin-top: 1em;
+    }
+
+    #modal-label {
+        font-size: 18px;
+        font-weight: 400;
     }
   </style>
   <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
@@ -95,6 +100,7 @@
                 </div>
                 <form id="sendForm" name="sendForm" method="post">
                 <input type="hidden" name="qaContents" />
+                <input type="hidden" name="qaWriter" value="${UserDTO.userId}" />
                 <div class="content-info">
                     <div class="content-topic col-12">
                         <label for="topic">토픽</label>
@@ -166,8 +172,8 @@
         <div class="close-area">X</div>
         <div class="modal-content">
             <form name="modalForm" id="modalForm" method="post" onSubmit="return false;">
-                <label for="modal-htNm" class="col-sm-1 col-form-label">태그명</label>
-                <input id="modal-htNm" type="text" name="htNm" />
+                <label for="modal-htNm" id="modal-label" class="col-sm-1 col-form-label">태그명</label>
+                <input id="modal-htNm" type="text" name="htNm" style="line-height: 2em;"/>
 
                 <button type="button" class="modal-btn btn-dark div-right" onClick="jsTagModalAdd();">추가</button>
             </form>

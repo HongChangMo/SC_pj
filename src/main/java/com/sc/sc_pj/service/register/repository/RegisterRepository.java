@@ -15,6 +15,8 @@ public interface RegisterRepository extends JpaRepository<RegisterDomain, Long> 
 
     public RegisterDomain findByUserNo(Long userNo);
 
+    public RegisterDomain findByUserId(String userId);
+
     @Transactional
     @Modifying
     @Query(value = "update RegisterDomain r set r.userPwd = :userPwd, r.userNickName = :userNickName, r.userPhone = :userPhone where r.userNo=:userNo")

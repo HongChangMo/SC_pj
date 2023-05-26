@@ -1,7 +1,6 @@
 package com.sc.sc_pj.service.qa.repository;
 
 import com.sc.sc_pj.service.qa.domain.QnaDomain;
-import com.sc.sc_pj.service.qa.dto.QnaDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
