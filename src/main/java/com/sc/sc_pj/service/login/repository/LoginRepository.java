@@ -15,4 +15,5 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public interface LoginRepository extends JpaRepository<UserDomain, Long> {
     public Optional<UserDomain> findByUserId(String userId);
+
 }

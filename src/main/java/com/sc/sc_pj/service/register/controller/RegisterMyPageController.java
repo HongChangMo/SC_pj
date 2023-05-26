@@ -64,4 +64,15 @@ public class RegisterMyPageController {
 
         return mv;
     }
+
+    @RequestMapping("/profile/listImageView")
+    public ModelAndView getListImageView(long userNo) {
+        ModelAndView mv = new ModelAndView("listImageView");
+
+        RegisterFileDTO dto = registerService.getRegisterFile(userNo);
+
+        mv.addObject("fileFullPath", dto.getFileSavePath());
+
+        return mv;
+    }
 }

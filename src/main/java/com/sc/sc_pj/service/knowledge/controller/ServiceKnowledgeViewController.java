@@ -1,33 +1,30 @@
-package com.sc.sc_pj.service.qa.controller;
+package com.sc.sc_pj.service.knowledge.controller;
 
 import com.sc.sc_pj.service.common.dto.ComHashTagDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagMapDTO;
 import com.sc.sc_pj.service.common.dto.CommonDTO;
 import com.sc.sc_pj.service.common.service.CommonService;
-import com.sc.sc_pj.service.login.dto.UserDTO;
-import com.sc.sc_pj.service.qa.dto.QnaDTO;
-import com.sc.sc_pj.service.qa.service.QnaService;
+import com.sc.sc_pj.service.knowledge.dto.KnowledgeDTO;
+import com.sc.sc_pj.service.knowledge.service.KnowledgeService;
 import com.sc.sc_pj.service.register.dto.RegisterDTO;
 import com.sc.sc_pj.service.register.service.RegisterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Controller
-public class ServiceQAViewController {
-
+@Service
+@RequestMapping("/knowledge")
+public class ServiceKnowledgeViewController {
     @Autowired
-    private QnaService qnaService;
+    private KnowledgeService knowledgeService;
 
     @Autowired
     private RegisterService registerService;
@@ -35,36 +32,23 @@ public class ServiceQAViewController {
     @Autowired
     private CommonService commonService;
 
-    @RequestMapping("/qa/qaView")
-    public ModelAndView qaView(@RequestParam("qaNo") String qaNo, HttpServletRequest request) {
-
+    @GetMapping("/knowledgeView")
+    public ModelAndView knowledgeView(@RequestParam("knNo") String knNo ) {
         ModelAndView mv = new ModelAndView();
 
-        HttpSession session = request.getSession(false);
+        int views = knowledgeService.UpdateViews(Long.parseLong(knNo));
 
-        if( session != null ) {
-            UserDTO userDTO = (UserDTO) session.getAttribute("UserDTO");
-            //log.info(userDTO.toString());
+        KnowledgeDTO dto = knowledgeService.getKnowledge(Long.parseLong(knNo));
 
-            // session이 존재할때만 model에 담아줌.
-            mv.addObject("UserDTO", userDTO);
-        }
+        String topic = dto.getKnTopic();
 
-        // 조회수 증가
-        int views = qnaService.UpdateViews(Long.parseLong(qaNo));
-
-        QnaDTO dto = qnaService.getQna(qaNo);
-
-        String topic = dto.getQaTopic();
-
-        RegisterDTO registerDTO = registerService.getRegisterInfo(dto.getQaWriter());
-
+        RegisterDTO registerDTO = registerService.getRegisterInfo(dto.getKnWriter());
 
         // 공통코드 Topic 조회
-        CommonDTO comDto = commonService.getCode("qa01", topic);
+        CommonDTO comDto = commonService.getCode("kn01", topic);
 
         // 해시태그 Map 리스트 조회
-        List<ComHashTagMapDTO> tagMaps = commonService.getTagMaps(qaNo, 1);
+        List<ComHashTagMapDTO> tagMaps = commonService.getTagMaps(knNo, 2);
 
         List<ComHashTagDTO> hashTagList = new ArrayList<ComHashTagDTO>();
 
@@ -77,10 +61,10 @@ public class ServiceQAViewController {
         }
 
         mv.addObject("RegisterDTO", registerDTO);
-        mv.addObject("QnaDTO", dto);
+        mv.addObject("KnowledgeDTO", dto);
         mv.addObject("CommonDTO", comDto);
         mv.addObject("hashTagList", hashTagList);
-        mv.setViewName("service/qa/qaView");
+        mv.setViewName("service/knowledge/knowledgeView");
 
         return mv;
     }

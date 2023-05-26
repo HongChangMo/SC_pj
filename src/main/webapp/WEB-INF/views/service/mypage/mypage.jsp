@@ -2,45 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<style type="text/css">
-    .mypage-sub > h2 {
-        font-size: 20px;
-    }
-
-    .mypage-info {
-        position: relative;
-        left: 50%;
-    }
-
-    .profile-header {
-        position: relative;
-        left: 30%;
-        width: 250px;
-        height: 250px;
-        border-radius: 70%;
-        overflow: hidden;
-    }
-
-    .profile-header > a > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .profile-image {
-        display: none;
-    }
-
-    .profile-txt {
-        display: none;
-        position: relative;
-        left: 42%;
-        color: #444;
-        top: -55px;
-    }
-</style>
-
+<link rel="stylesheet" href="/resources/assets/css/sub.css" />
 <script>
     $(document).ready(function() {
 

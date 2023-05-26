@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link rel="stylesheet" href="/resources/assets/css/main.css" />
+<link rel="stylesheet" href="/resources/assets/css/sub.css" />
+
 <!-- Q&A -->
 <div class="container">
     <div class="row">
@@ -76,7 +78,10 @@
                                     <li>
                                         <div class="txt-wrap">
                                             <p class="txt-info">
-                                                <span>${result.userDTO.userName}</span>
+                                                <span class="list-profile">
+                                                    <img src="/profile/listImageView?userNo=${result.userDTO.userNo}" alt="Profile" id="profileImg" onerror="this.src='/resources/images/noimages.png'" />
+                                                </span>
+                                                <span>${result.userDTO.userNickName}</span>
                                             </p>
                                             <h3><a href="javascript:jsView('${result.qaNo}')">${result.qaTitle}</a></h3>
                                             <p class="hash-tag">
@@ -157,7 +162,7 @@
     $(document).ready(function() {
         jsPageUnit();
 
-        jsTopicSelect()
+        jsTopicSelect();
 
         // pageUnit Value Set
         function jsPageUnit() {

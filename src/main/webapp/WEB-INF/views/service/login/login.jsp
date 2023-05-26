@@ -109,7 +109,11 @@
 
     <script>
         $(document).ready(function() {
-
+            $("#sendForm").find('input').keypress(function(e) {
+                if( e.keyCode == 13 ) {
+                    jsSignIn();
+                }
+            });
         });
 
         function jsSignIn() {

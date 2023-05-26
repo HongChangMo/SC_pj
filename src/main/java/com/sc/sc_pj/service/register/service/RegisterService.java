@@ -55,6 +55,10 @@ public class RegisterService {
         return registerRepository.findByUserNo(userNo).toDTO();
     }
 
+    public RegisterDTO getRegisterInfo(String userId) {
+        return registerRepository.findByUserId(userId).toDTO();
+    }
+
     public int updateRegister(RegisterDTO dto) {
         return registerRepository.registerUpdate(dto.getUserNo(), dto.getUserPwd(), dto.getUserNickName(), dto.getUserPhone());
     }
