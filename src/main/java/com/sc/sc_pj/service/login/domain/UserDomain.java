@@ -1,5 +1,6 @@
 package com.sc.sc_pj.service.login.domain;
 
+import com.sc.sc_pj.service.common.domain.ComCommentDomain;
 import com.sc.sc_pj.service.login.dto.UserDTO;
 import com.sc.sc_pj.service.qa.domain.QnaDomain;
 import lombok.*;
@@ -43,6 +44,9 @@ public class UserDomain implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private List<QnaDomain> qnaList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userDomain")
+    private List<ComCommentDomain> commentList = new ArrayList<>();
 
 
     @Builder

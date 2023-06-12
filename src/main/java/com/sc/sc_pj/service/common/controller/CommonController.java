@@ -1,13 +1,13 @@
 package com.sc.sc_pj.service.common.controller;
 
+import com.sc.sc_pj.service.common.domain.ComCommentDomain;
 import com.sc.sc_pj.service.common.domain.ComHashTagDomain;
+import com.sc.sc_pj.service.common.dto.ComCommentDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagDTO;
 import com.sc.sc_pj.service.common.service.CommonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -57,6 +57,31 @@ public class CommonController {
 
         mv.addObject("fileFullPath", fileFullPath);
         mv.addObject("fileThumbPath", fileThumbPath);
+
+        return mv;
+    }
+
+    @RequestMapping("/commentAdd")
+    public ModelAndView commentAdd(@ModelAttribute("ComCommentDTO") ComCommentDTO dto) {
+        ModelAndView mv = new ModelAndView("jsonView");
+
+        log.info("---add Comment ---");
+        ComCommentDomain domain = commonService.addComment(dto);
+
+        mv.addObject("cNo", domain.getCNo());
+
+        return mv;
+    }
+
+    @RequestMapping("/commentDel")
+    public ModelAndView commentDel(@RequestParam("cNo") Long cNo) {
+
+        ModelAndView mv = new ModelAndView("jsonView");
+
+        log.info("---delete Comment ---");
+
+        long result = commonService.deleteComment(cNo);
+        mv.addObject("result", result);
 
         return mv;
     }

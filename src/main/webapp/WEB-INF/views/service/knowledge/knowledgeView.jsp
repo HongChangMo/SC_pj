@@ -22,7 +22,7 @@
                             <h2>${KnowledgeDTO.knTitle}</h2>
                         </div>
                         <div class="content-view">
-                            <h4>${KnowledgeDTO.knWriter}</h4>
+                            <h4>${RegisterDTO.userNickName}</h4>
                             <p>
                                 <img src="/resources/images/eye.png" />
                                 &nbsp;${KnowledgeDTO.knViews} <!-- 게시물 조회수 -->
@@ -48,22 +48,20 @@
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose>
-                            <!--
-                            <a href="#"><span>#자바</span></a>
-                            <a href="#"><span>#자바스크립트</span></a>
-                            -->
                         </div>
                     </div>
 
                     <br/>
-                    <button type="button" id="kn_deleteBtn" class="btn btn-dark col-1 " style="float:right;">
-                        <img src="/resources/images/free-icon-delete-7989218.png" />
-                         삭제
-                    </button>
-                    <button type="button" id="kn_updateBtn" class="btn btn-dark col-1" style="float:right; margin: 0em 1em 0em 1em;">
-                        <img src="/resources/images/pencil-white.png" />
-                        수정
-                    </button>
+                    <c:if test="${RegisterDTO.userNo eq UserDTO.userNo}">
+                        <button type="button" id="kn_deleteBtn" class="btn btn-dark col-1 " style="float:right;">
+                            <img src="/resources/images/free-icon-delete-7989218.png" />
+                             삭제
+                        </button>
+                        <button type="button" id="kn_updateBtn" class="btn btn-dark col-1" style="float:right; margin: 0em 1em 0em 1em;">
+                            <img src="/resources/images/pencil-white.png" />
+                            수정
+                        </button>
+                    </c:if>
                     <br/>
                     <br/>
 
