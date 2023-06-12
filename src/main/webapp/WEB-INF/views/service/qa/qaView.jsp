@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<link rel="stylesheet" href="/resources/assets/css/sub.css" />
 <div class="container">
     <div class="row">
         <div class="col-12 content-wrap">
@@ -22,7 +23,7 @@
                             <h2>${QnaDTO.qaTitle}</h2>
                         </div>
                         <div class="content-view">
-                            <h4>${QnaDTO.qaWriter}</h4>
+                            <h4>${RegisterDTO.userNickName}</h4>
                             <p>
                                 <img src="/resources/images/eye.png" />
                                 &nbsp;${QnaDTO.qaViews} <!-- 게시물 조회수 -->
@@ -67,28 +68,108 @@
                     <br/>
 
                     <!-- 댓글 영역 -->
-                    <div class="content-comment col-12">
-                        <textarea class="form-control col-10 div-left"></textarea>
-                        <button class="comment-btn col-1" type="button">등록</button>
-                        <div class="comment-list col-10">
-                            <ul>
-                                <li>
-                                    <div class="comment-sub">
-                                        <span class="div-left">작성자</span>
-                                        <div class="comment-sub-btn">
-                                            <a href="#"><img src="/resources/images/pencil.png" /></a>&nbsp;
-                                            <a href="#"><img src="/resources/images/eraser.png" /></a>
-                                        </div>
-                                        <p>
-                                           댓글 내용입니다.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+                    <form name="commentForm" method="post">
+                    <input type="hidden" name="cType" value="1" />
+                    <input type="hidden" name="cBoardNo" value="${QnaDTO.qaNo}" />
+                    <input type="hidden" name="cWriter" value="${UserDTO.userId}" />
+                        <div class="content-comment col-12">
+                            <textarea name="cContent" class="form-control col-10 div-left"><c:if test="${empty UserDTO}">로그인 후 이용이 가능합니다.</c:if></textarea>
+                            <button id="commentBtn" class="comment-btn col-1" type="button" <c:if test="${empty UserDTO}">disabled="disabled"</c:if>>등록</button>
+                            <div class="comment-list col-10">
+                                <ul>
+                                    <c:choose>
+                                        <c:when test="${empty CommentList}">
+                                            <li>
+                                                등록된 댓글이 없습니다.
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach items="${CommentList}" var="result">
+                                                <li>
+                                                    <div class="comment-sub">
+                                                        <span class="list-profile">
+                                                            <img src="/profile/listImageView?userNo=${result.userDTO.userNo}" alt="Profile" id="profileImg" onerror="this.src='/resources/images/noimages.png'" />
+                                                        </span>
+                                                        <span class="div-left">${result.userDTO.userNickName}</span>
+                                                        <div class="comment-sub-btn">
+                                                            &nbsp;
+                                                            <c:if test="${UserDTO.userId eq result.CWriter}">
+                                                                <a href="javascript:jsCommentDel('${result.CNo}')"><img src="/resources/images/eraser.png" /></a>
+                                                            </c:if>
+                                                        </div>
+                                                        <p>
+                                                           ${result.CContent}
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#commentBtn").on('click', function() {
+            const content = $('textarea[name="cContent"]').val();
+
+            if(content == '') {
+                alert("댓글의 내용을 입력하셔야합니다.");
+                return false;
+            } else {
+                jsCommentAdd();
+            }
+
+        });
+    });
+
+    // 댓글 등록 함수
+    function jsCommentAdd() {
+        const commentFrm = $('form[name="commentForm"]').serialize();
+
+        $.ajax({
+            url: '/com/commentAdd',
+            dataType: 'json',
+            data: commentFrm,
+            type: 'post',
+            success: function(ajaxResult) {
+                if(ajaxResult.cNo > 0) {
+                    alert("댓글이 등록되었습니다.");
+                    location.href="/qa/qaView?qaNo=${QnaDTO.qaNo}";
+                }
+            },
+            error: function(err) {
+                alert("댓글 등록에 실패했습니다.");
+            }
+        });
+
+    }
+
+    //댓글 삭제
+    function jsCommentDel(c_no) {
+        $.ajax({
+            url: '/com/commentDel',
+            dataType: 'json',
+            data: {cNo : c_no},
+            type: 'post',
+            success: function(ajaxResult) {
+                if(ajaxResult.result > 0) {
+                    alert("댓글이 삭제되었습니다.");
+                    location.href="/qa/qaView?qaNo=${QnaDTO.qaNo}";
+                }
+            },
+            error: function(err) {
+                alert("댓글 삭제에 실패했습니다.");
+            }
+        });
+    }
+
+
+</script>

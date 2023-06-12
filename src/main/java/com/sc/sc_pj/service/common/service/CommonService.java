@@ -1,11 +1,14 @@
 package com.sc.sc_pj.service.common.service;
 
+import com.sc.sc_pj.service.common.domain.ComCommentDomain;
 import com.sc.sc_pj.service.common.domain.ComHashTagDomain;
 import com.sc.sc_pj.service.common.domain.ComHashTagMapDomain;
 import com.sc.sc_pj.service.common.domain.CommonDomain;
+import com.sc.sc_pj.service.common.dto.ComCommentDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagMapDTO;
 import com.sc.sc_pj.service.common.dto.CommonDTO;
+import com.sc.sc_pj.service.common.repository.ComCommentRepository;
 import com.sc.sc_pj.service.common.repository.ComHashTagMapRepository;
 import com.sc.sc_pj.service.common.repository.ComHashTagRepository;
 import com.sc.sc_pj.service.common.repository.CommonRepository;
@@ -24,6 +27,8 @@ public class CommonService {
     private final ComHashTagRepository comHashTagRepository;
 
     private final ComHashTagMapRepository comHashTagMapRepository;
+
+    private final ComCommentRepository comCommentRepository;
 
     /*
     * 공통코드 리스트 출력
@@ -129,6 +134,11 @@ public class CommonService {
         return tagsList;
     }
 
+    /*
+     * 해시태그 Map 전체 조회
+     * @param
+     * @return
+     * */
     public List<ComHashTagMapDTO> getAllTags() {
         List<ComHashTagMapDomain> tagMaps = comHashTagMapRepository.findAll();
 
@@ -140,4 +150,35 @@ public class CommonService {
 
         return tagsList;
     }
+
+    /*
+     * 댓글 등록
+     * @param ComCommentDTO
+     * @return
+     * */
+    public ComCommentDomain addComment(ComCommentDTO dto) {
+        ComCommentDomain result = comCommentRepository.save(dto.toEntity());
+
+        return result;
+    }
+
+    public List<ComCommentDTO> getCommentList(int cBoardNo, int cType) {
+        List<ComCommentDTO> result = new ArrayList<ComCommentDTO>();
+
+        List<ComCommentDomain> commentList = comCommentRepository.findBoardNoAndType(cBoardNo, cType);
+
+        for (ComCommentDomain comment : commentList) {
+            result.add(comment.toDTO());
+        }
+
+        return result;
+    }
+
+    public Long deleteComment(long cNo) {
+        long result = comCommentRepository.deleteBycNo(cNo);
+
+        return result;
+    }
+
+
 }

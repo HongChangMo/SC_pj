@@ -1,5 +1,6 @@
 package com.sc.sc_pj.service.qa.controller;
 
+import com.sc.sc_pj.service.common.dto.ComCommentDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagDTO;
 import com.sc.sc_pj.service.common.dto.ComHashTagMapDTO;
 import com.sc.sc_pj.service.common.dto.CommonDTO;
@@ -11,6 +12,7 @@ import com.sc.sc_pj.service.register.dto.RegisterDTO;
 import com.sc.sc_pj.service.register.service.RegisterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,6 +78,10 @@ public class ServiceQAViewController {
             }
         }
 
+        // 댓글 리스트
+        List<ComCommentDTO> commentList = commonService.getCommentList(Integer.parseInt(qaNo), 1);
+
+        mv.addObject("CommentList", commentList);
         mv.addObject("RegisterDTO", registerDTO);
         mv.addObject("QnaDTO", dto);
         mv.addObject("CommonDTO", comDto);
